@@ -139,7 +139,7 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 rounded-full border border-gold-500/35 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gold-400">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            <span id="hero-badge">Open to Corporate Finance, FP&amp;A, Controlling &amp; Valuation Roles (Ho Chi Minh City / Da Nang)</span>
+            <span id="hero-badge">Open to Corporate Finance, FP&amp;A, Controlling &amp; Valuation Roles (HCMC / Da Nang)</span>
           </div>
 
           <h1 id="hero-name" class="font-serif text-3xl font-bold tracking-tight text-white sm:text-5xl leading-[1.15]">
@@ -227,7 +227,8 @@
           <div class="lg:col-span-7">
             <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Background &amp; Direction</div>
             <p id="about-p2" class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous learning and hands-on practice in financial modeling, accounting fundamentals, and data analysis. While I am early in my career, I bring curiosity, adaptability, and a strong willingness to learn from real-world operations. I am looking for a Finance Internship opportunity from December 2026 in Ho Chi Minh City. </p>
+              Senior Financial Management undergraduate (GPA 3.58/4.0, Fluent English, Beginner Chinese) aiming to become a seasoned finance specialist, currently at the start of my career with hands-on experience in DCF valuation, multi-asset portfolio management (+11.34% ROI), and Power BI analytics. Proven track record in authoring 100+ compliance-checked finance articles alongside 100+ hours of self-directed finance coursework on Coursera. Seeking a full-time or part-time Finance Internship (FP&amp;A, Controlling, or Valuation) from December 2026 in HCMC or Da Nang to deliver decision-ready financial analysis.
+            </p>
           </div>
         </div>
       </div>
@@ -372,7 +373,7 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
               <span class="text-xs font-medium text-slate-500">Mar 2024 – Aug 2025</span>
             </div>
             <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Educational Content Creator Intern</h3>
-            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; Ho Chi Minh City</p>
+            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; HCMC</p>
 
             <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
               <div>
@@ -853,45 +854,84 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
       <!-- Tab 5: Operational Driver -> FCF Model -->
       <div id="tab-ops" class="analysis-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
         <div class="grid gap-8 lg:grid-cols-12 items-start">
-          <div class="lg:col-span-5 space-y-3.5">
-            <div>
-              <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Operational Modeling</div>
-              <h3 class="mt-1 text-xl font-bold text-navy-900">Operational Driver &rarr; Unlevered FCF</h3>
-              <p class="mt-1 text-xs text-slate-500">Connect revenue growth, operating margins, CapEx, and working capital drivers directly to 5-year Unlevered Free Cash Flow.</p>
+          <div class="lg:col-span-5 space-y-4">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Operational Modeling</div>
+                <h3 class="mt-1 text-xl font-bold text-navy-900">Operational Driver &rarr; Unlevered FCF</h3>
+                <p class="mt-1 text-xs text-slate-500">Enter exact operating assumptions and a 5-year CapEx &amp; PP&amp;E schedule (instead of % of sales shortcuts) to compute Unlevered FCF.</p>
+              </div>
+              <button id="ops-reset-btn" type="button" class="shrink-0 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-[11px] font-semibold text-navy-900 hover:bg-slate-100 transition">Reset</button>
             </div>
-            <div>
-              <div class="flex justify-between text-xs"><span class="text-slate-600">Base Revenue (Year 0)</span><strong id="ops-rev-val" class="tabular-nums text-navy-900">$50.0M</strong></div>
-              <input id="ops-rev" type="range" min="10" max="200" step="5" value="50" class="w-full accent-navy-900" />
+
+            <!-- Operating Assumptions -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 space-y-3">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-navy-900">1. Operating &amp; Working Capital Inputs</div>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">Base Revenue Y0 ($M)</span>
+                  <input id="ops-rev" type="number" min="1" step="0.5" value="50.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">Revenue Growth (% YoY)</span>
+                  <input id="ops-growth" type="number" min="-20" max="100" step="0.5" value="12.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">EBITDA Margin (%)</span>
+                  <input id="ops-ebitda" type="number" min="0" max="80" step="0.5" value="22.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">Effective Tax Rate (%)</span>
+                  <input id="ops-tax" type="number" min="0" max="50" step="0.5" value="20.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+              </div>
+              <label class="block">
+                <span class="block text-[11px] font-medium text-slate-600 mb-1">&Delta;NWC (% of &Delta;Revenue)</span>
+                <input id="ops-nwc" type="number" min="-20" max="50" step="0.5" value="10.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+              </label>
             </div>
-            <div>
-              <div class="flex justify-between text-xs"><span class="text-slate-600">Revenue Growth (% YoY)</span><strong id="ops-growth-val" class="tabular-nums text-navy-900">12.0%</strong></div>
-              <input id="ops-growth" type="range" min="2" max="30" step="0.5" value="12" class="w-full accent-navy-900" />
+
+            <!-- PP&E & CapEx Schedule -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 space-y-3">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-navy-900">2. PP&amp;E &amp; CapEx Schedule ($M)</div>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">Beg. Net PP&amp;E ($M)</span>
+                  <input id="ops-beg-ppe" type="number" min="0" step="0.5" value="20.0" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+                <label class="block">
+                  <span class="block text-[11px] font-medium text-slate-600 mb-1">Avg. Useful Life (Yrs)</span>
+                  <input id="ops-life" type="number" min="1" max="40" step="1" value="10" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                </label>
+              </div>
+              <div>
+                <div class="text-[11px] font-medium text-slate-600 mb-1">Annual CapEx Plan ($M): Y1 &ndash; Y5</div>
+                <div class="grid grid-cols-5 gap-1.5">
+                  <div>
+                    <span class="block text-[10px] text-slate-500 text-center">Y1</span>
+                    <input id="ops-capex-1" type="number" min="0" step="0.1" value="4.5" class="w-full rounded-lg border border-slate-200 bg-white px-1.5 py-1.5 text-xs font-semibold text-center text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                  </div>
+                  <div>
+                    <span class="block text-[10px] text-slate-500 text-center">Y2</span>
+                    <input id="ops-capex-2" type="number" min="0" step="0.1" value="5.0" class="w-full rounded-lg border border-slate-200 bg-white px-1.5 py-1.5 text-xs font-semibold text-center text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                  </div>
+                  <div>
+                    <span class="block text-[10px] text-slate-500 text-center">Y3</span>
+                    <input id="ops-capex-3" type="number" min="0" step="0.1" value="3.0" class="w-full rounded-lg border border-slate-200 bg-white px-1.5 py-1.5 text-xs font-semibold text-center text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                  </div>
+                  <div>
+                    <span class="block text-[10px] text-slate-500 text-center">Y4</span>
+                    <input id="ops-capex-4" type="number" min="0" step="0.1" value="3.0" class="w-full rounded-lg border border-slate-200 bg-white px-1.5 py-1.5 text-xs font-semibold text-center text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                  </div>
+                  <div>
+                    <span class="block text-[10px] text-slate-500 text-center">Y5</span>
+                    <input id="ops-capex-5" type="number" min="0" step="0.1" value="3.5" class="w-full rounded-lg border border-slate-200 bg-white px-1.5 py-1.5 text-xs font-semibold text-center text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="flex justify-between text-xs"><span class="text-slate-600">EBITDA Margin (% of Rev)</span><strong id="ops-ebitda-val" class="tabular-nums text-navy-900">22.0%</strong></div>
-              <input id="ops-ebitda" type="range" min="8" max="45" step="0.5" value="22" class="w-full accent-navy-900" />
-            </div>
+
             <div class="grid grid-cols-2 gap-3">
-              <div>
-                <div class="flex justify-between text-xs"><span class="text-slate-600">D&amp;A (% Rev)</span><strong id="ops-da-val" class="tabular-nums text-navy-900">4.0%</strong></div>
-                <input id="ops-da" type="range" min="1" max="10" step="0.5" value="4" class="w-full accent-navy-900" />
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span class="text-slate-600">CapEx (% Rev)</span><strong id="ops-capex-val" class="tabular-nums text-navy-900">5.0%</strong></div>
-                <input id="ops-capex" type="range" min="1" max="15" step="0.5" value="5" class="w-full accent-navy-900" />
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <div class="flex justify-between text-xs"><span class="text-slate-600">Tax Rate (%)</span><strong id="ops-tax-val" class="tabular-nums text-navy-900">20%</strong></div>
-                <input id="ops-tax" type="range" min="10" max="30" step="1" value="20" class="w-full accent-navy-900" />
-              </div>
-              <div>
-                <div class="flex justify-between text-xs"><span class="text-slate-600">&Delta;NWC (% &Delta;Rev)</span><strong id="ops-nwc-val" class="tabular-nums text-navy-900">10%</strong></div>
-                <input id="ops-nwc" type="range" min="0" max="25" step="1" value="10" class="w-full accent-navy-900" />
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="rounded-xl bg-navy-900 p-4 text-white">
                 <div class="text-[11px] uppercase tracking-wider text-gold-400">5-Yr Cumulative FCF</div>
                 <div id="ops-cum-fcf" class="mt-1 text-2xl font-bold tabular-nums">$0.0M</div>
@@ -901,7 +941,7 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
                 <div id="ops-conv" class="mt-1 text-2xl font-bold text-navy-900 tabular-nums">0.0%</div>
               </div>
             </div>
-            <p class="text-[11px] text-slate-400">Formula: Unlevered FCF = EBIT &times; (1 &minus; Tax) + D&amp;A &minus; CapEx &minus; &Delta;NWC.</p>
+            <p class="text-[11px] text-slate-400">D&amp;A<sub>t</sub> = Beg. Net PP&amp;E<sub>t</sub> &divide; Useful Life; End PP&amp;E<sub>t</sub> = Beg. PP&amp;E<sub>t</sub> + CapEx<sub>t</sub> &minus; D&amp;A<sub>t</sub>; UFCF = EBIT(1 &minus; t) + D&amp;A &minus; CapEx &minus; &Delta;NWC.</p>
           </div>
           <div class="lg:col-span-7 space-y-4">
             <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
@@ -1211,7 +1251,7 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
       <div>
         <h3 class="font-serif text-2xl font-bold">Ready to contribute to your Finance Department</h3>
-        <p class="mt-1 text-sm text-slate-400">Available for full-time internships &amp; analyst roles in Ho Chi Minh City.</p>
+        <p class="mt-1 text-sm text-slate-400">Available for full-time internships &amp; analyst roles in Ho Chi Minh City or Da Nang.</p>
       </div>
       <div class="flex flex-wrap gap-3">
         <button id="copy-phone-footer" class="rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-medium hover:bg-white/10 transition">+84 964 912 357</button>
@@ -1659,14 +1699,17 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
         }
       });
 
-      // Tab 5: Operational Driver -> FCF Model
-      const opsRev = document.getElementById('ops-rev');
-      const opsGrowth = document.getElementById('ops-growth');
-      const opsEbitda = document.getElementById('ops-ebitda');
-      const opsDa = document.getElementById('ops-da');
-      const opsCapex = document.getElementById('ops-capex');
-      const opsTax = document.getElementById('ops-tax');
-      const opsNwc = document.getElementById('ops-nwc');
+      // Tab 5: Operational Driver -> FCF Model (with PP&E Roll-Forward & Numeric Inputs)
+      const opsInputs = {
+        rev: document.getElementById('ops-rev'),
+        growth: document.getElementById('ops-growth'),
+        ebitda: document.getElementById('ops-ebitda'),
+        tax: document.getElementById('ops-tax'),
+        nwc: document.getElementById('ops-nwc'),
+        begPpe: document.getElementById('ops-beg-ppe'),
+        life: document.getElementById('ops-life'),
+        capex: [1, 2, 3, 4, 5].map(i => document.getElementById('ops-capex-' + i))
+      };
 
       const opsChart = new Chart(document.getElementById('opsChart').getContext('2d'), {
         type: 'bar',
@@ -1687,56 +1730,79 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
       });
 
       function updateOps() {
-        const baseRev = Number(opsRev.value);
-        const g = Number(opsGrowth.value) / 100;
-        const mEbitda = Number(opsEbitda.value) / 100;
-        const pDa = Number(opsDa.value) / 100;
-        const pCapex = Number(opsCapex.value) / 100;
-        const tax = Number(opsTax.value) / 100;
-        const pNwc = Number(opsNwc.value) / 100;
+        const baseRev = Math.max(0, Number(opsInputs.rev.value) || 0);
+        const g = (Number(opsInputs.growth.value) || 0) / 100;
+        const mEbitda = (Number(opsInputs.ebitda.value) || 0) / 100;
+        const tax = Math.min(1, Math.max(0, (Number(opsInputs.tax.value) || 0) / 100));
+        const pNwc = (Number(opsInputs.nwc.value) || 0) / 100;
+        let begPpe = Math.max(0, Number(opsInputs.begPpe.value) || 0);
+        const life = Math.max(1, Number(opsInputs.life.value) || 1);
+        const capexPlan = opsInputs.capex.map(el => Math.max(0, Number(el.value) || 0));
 
-        document.getElementById('ops-rev-val').textContent = '$' + baseRev.toFixed(1) + 'M';
-        document.getElementById('ops-growth-val').textContent = (g * 100).toFixed(1) + '%';
-        document.getElementById('ops-ebitda-val').textContent = (mEbitda * 100).toFixed(1) + '%';
-        document.getElementById('ops-da-val').textContent = (pDa * 100).toFixed(1) + '%';
-        document.getElementById('ops-capex-val').textContent = (pCapex * 100).toFixed(1) + '%';
-        document.getElementById('ops-tax-val').textContent = Math.round(tax * 100) + '%';
-        document.getElementById('ops-nwc-val').textContent = Math.round(pNwc * 100) + '%';
-
-        const revs = [], ebitdas = [], nopats = [], fcfs = [];
+        const revs = [], ebitdas = [], das = [], nopats = [], dnwcArr = [], fcfs = [], endPpes = [];
         let prevRev = baseRev;
         let cumFcf = 0;
-        for (let t = 1; t <= 5; t++) {
+        for (let t = 0; t < 5; t++) {
           const r = prevRev * (1 + g);
           const ebitda = r * mEbitda;
-          const da = r * pDa;
+          const capex = capexPlan[t];
+          const da = Math.min(begPpe, begPpe / life);
+          const endPpe = Math.max(0, begPpe + capex - da);
           const ebit = ebitda - da;
           const nopat = ebit * (1 - tax);
-          const capex = r * pCapex;
           const dnwc = (r - prevRev) * pNwc;
           const fcf = nopat + da - capex - dnwc;
-          revs.push(Number(r.toFixed(2)));
-          ebitdas.push(Number(ebitda.toFixed(2)));
-          nopats.push(Number(nopat.toFixed(2)));
-          fcfs.push(Number(fcf.toFixed(2)));
+
+          revs.push(r);
+          ebitdas.push(ebitda);
+          das.push(da);
+          nopats.push(nopat);
+          dnwcArr.push(dnwc);
+          fcfs.push(fcf);
+          endPpes.push(endPpe);
+
           cumFcf += fcf;
           prevRev = r;
+          begPpe = endPpe;
         }
 
         document.getElementById('ops-cum-fcf').textContent = '$' + cumFcf.toFixed(1) + 'M';
         const conv = ebitdas[4] > 0 ? (fcfs[4] / ebitdas[4]) * 100 : 0;
         document.getElementById('ops-conv').textContent = conv.toFixed(1) + '%';
 
-        opsChart.data.datasets[0].data = revs;
-        opsChart.data.datasets[1].data = ebitdas;
-        opsChart.data.datasets[2].data = fcfs;
+        opsChart.data.datasets[0].data = revs.map(v => Number(v.toFixed(2)));
+        opsChart.data.datasets[1].data = ebitdas.map(v => Number(v.toFixed(2)));
+        opsChart.data.datasets[2].data = fcfs.map(v => Number(v.toFixed(2)));
         opsChart.update();
 
         const tbody = document.getElementById('ops-table-body');
-        const row = (label, arr, bold) => `<tr class="${bold ? 'bg-emerald-50/60 font-bold text-navy-900' : 'text-slate-700'}"><td class="px-3 py-2 text-left font-medium">${label}</td>${arr.map(v => `<td class="px-3 py-2">$${v.toFixed(1)}</td>`).join('')}</tr>`;
-        tbody.innerHTML = row('Revenue', revs, false) + row('EBITDA', ebitdas, false) + row('NOPAT', nopats, false) + row('Unlevered FCF', fcfs, true);
+        const row = (label, arr, cls = 'text-slate-700') =>
+          `<tr class="${cls}"><td class="px-3 py-2 text-left font-medium">${label}</td>${arr.map(v => `<td class="px-3 py-2">${v < 0 ? '-$' + Math.abs(v).toFixed(1) : '$' + v.toFixed(1)}</td>`).join('')}</tr>`;
+        tbody.innerHTML =
+          row('Revenue', revs) +
+          row('EBITDA', ebitdas) +
+          row('(-) D&amp;A (PP&amp;E / Life)', das.map(v => -v)) +
+          row('NOPAT', nopats) +
+          row('(-) CapEx', capexPlan.map(v => -v)) +
+          row('(-) &Delta;NWC', dnwcArr.map(v => -v)) +
+          row('Unlevered FCF', fcfs, 'bg-emerald-50/70 font-bold text-navy-900') +
+          row('Ending Net PP&amp;E', endPpes, 'bg-slate-50/60 text-slate-500');
       }
-      [opsRev, opsGrowth, opsEbitda, opsDa, opsCapex, opsTax, opsNwc].forEach(el => el.addEventListener('input', updateOps));
+
+      [opsInputs.rev, opsInputs.growth, opsInputs.ebitda, opsInputs.tax, opsInputs.nwc, opsInputs.begPpe, opsInputs.life, ...opsInputs.capex]
+        .forEach(el => el.addEventListener('input', updateOps));
+
+      document.getElementById('ops-reset-btn').addEventListener('click', () => {
+        opsInputs.rev.value = '50.0';
+        opsInputs.growth.value = '12.0';
+        opsInputs.ebitda.value = '22.0';
+        opsInputs.tax.value = '20.0';
+        opsInputs.nwc.value = '10.0';
+        opsInputs.begPpe.value = '20.0';
+        opsInputs.life.value = '10';
+        ['4.5', '5.0', '3.0', '3.0', '3.5'].forEach((v, idx) => { opsInputs.capex[idx].value = v; });
+        updateOps();
+      });
       updateOps();
 
       // Tab 6: Budget vs. Actual (BvA) Variance & Waterfall
