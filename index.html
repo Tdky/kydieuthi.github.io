@@ -722,9 +722,11 @@
             <div class="text-xs font-bold uppercase tracking-wider text-slate-500">WACC vs. Terminal Growth Sensitivity ($M Enterprise Value)</div>
             <div class="overflow-x-auto rounded-xl border border-slate-200">
               <table id="dcf-matrix" class="w-full text-center text-xs tabular-nums"></table>
-            </div>
-            <p class="text-xs text-slate-500">Highlighted cell marks the active WACC and Terminal Growth assumption.</p>
-          </div>
+             <div class="space-y-1 text-xs text-slate-500">
+            <p>Highlighted cell marks the active WACC and Terminal Growth assumption.</p>
+            <p><strong>Methodology:</strong> Unlevered DCF + Gordon Growth Model (Perpetuity) + Two-Way Sensitivity Matrix.</p>
+            <p><strong>Assumptions:</strong> End-of-year discounting, constant 5-year FCF CAGR, WACC &gt; TGR; outputs Enterprise Value (pre-Net Debt adjustment).</p>
+        </div>
         </div>
       </div>
 
@@ -780,6 +782,9 @@
                 <canvas id="wcChart"></canvas>
               </div>
             </div>
+            <p class="text-xs text-slate-500 leading-relaxed">
+            <strong>Note (For Reference Only):</strong> DSO is calculated on Revenue, while DIO &amp; DPO are based on COGS. Optimal CCC benchmarks vary by industry and company-specific operating factors.
+            </p>
           </div>
         </div>
       </div>
