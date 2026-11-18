@@ -456,7 +456,7 @@
             </div>
             <h3 class="mt-4 text-xl font-bold text-navy-900">Personal Investment Portfolio Management</h3>
             <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Managed a <strong>$4,000 multi-asset portfolio</strong> for an individual investor across 4 asset classes: <strong>60% Mutual Funds</strong>, <strong>20% Equities <strong>15% Gold</strong>, and <strong>5% Cash</strong>.
+              Managed a <strong>$4,000 multi-asset portfolio</strong> for an individual investor across 4 asset classes: <strong>60% Mutual Funds</strong>, <strong>20% Equities</strong>, <strong>15% Gold</strong>, and <strong>5% Cash</strong>.
             </p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Asset Allocation</span>
@@ -722,11 +722,13 @@
             <div class="text-xs font-bold uppercase tracking-wider text-slate-500">WACC vs. Terminal Growth Sensitivity ($M Enterprise Value)</div>
             <div class="overflow-x-auto rounded-xl border border-slate-200">
               <table id="dcf-matrix" class="w-full text-center text-xs tabular-nums"></table>
-             <div class="space-y-1 text-xs text-slate-500">
-            <p>Highlighted cell marks the active WACC and Terminal Growth assumption.</p>
-            <p><strong>Methodology:</strong> Unlevered DCF + Gordon Growth Model (Perpetuity) + Two-Way Sensitivity Matrix.</p>
-            <p><strong>Assumptions:</strong> End-of-year discounting, constant 5-year FCF CAGR, WACC &gt; TGR; outputs Enterprise Value (pre-Net Debt adjustment).</p>
-        </div>
+            </div>
+            <div class="space-y-1 text-xs text-slate-500">
+              <p>Highlighted cell marks the active WACC and Terminal Growth assumption.</p>
+              <p><strong>Methodology:</strong> Unlevered DCF + Gordon Growth Model (Perpetuity) + Two-Way Sensitivity Matrix.</p>
+              <p><strong>Assumptions:</strong> End-of-year discounting, constant 5-year FCF CAGR, WACC &gt; TGR; outputs Enterprise Value (pre-Net Debt adjustment).</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -740,6 +742,16 @@
               Grounded in my Grade-A <em>Working Capital Management</em> coursework: evaluate how inventory turnover (DIO), receivables collection (DSO), and payables terms (DPO) impact short-term liquidity alongside the <strong>5Cs Credit Model</strong> (Character, Capacity, Capital, Collateral, Conditions).
             </p>
             <div class="space-y-3 rounded-xl bg-slate-50 p-4 border border-slate-200/80">
+              <div>
+                <label for="wc-industry" class="block text-xs font-medium text-slate-700 mb-1">Industry Benchmark (Optional)</label>
+                <select id="wc-industry" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-navy-900">
+                  <option value="general">General / Cross-Industry (≤ 45 days)</option>
+                  <option value="retail">Retail &amp; FMCG / E-Commerce (≤ 0 days)</option>
+                  <option value="automotive">Automotive &amp; Manufacturing (≤ 50 days)</option>
+                  <option value="pharma">Pharmaceuticals &amp; Healthcare (≤ 75 days)</option>
+                  <option value="saas">Tech / SaaS &amp; Services (≤ 20 days)</option>
+                </select>
+              </div>
               <div>
                 <label for="wc-dio" class="flex justify-between text-xs font-medium text-slate-700 mb-1">
                   <span>Days Inventory Outstanding (DIO)</span>
@@ -1360,30 +1372,44 @@
         }
       });
 
+      const wcIndustry = document.getElementById('wc-industry');
+      const wcBenchmarks = {
+        general:    { label: 'Cross-Industry', good: 45, warn: 70 },
+        retail:     { label: 'Retail & FMCG', good: 0, warn: 25 },
+        automotive: { label: 'Automotive & Manufacturing', good: 50, warn: 80 },
+        pharma:     { label: 'Pharmaceuticals', good: 75, warn: 110 },
+        saas:       { label: 'Tech / SaaS', good: 20, warn: 45 }
+      };
+
       function updateWC() {
         const dio = Number(wcDio.value);
         const dso = Number(wcDso.value);
         const dpo = Number(wcDpo.value);
         const ccc = dio + dso - dpo;
+        const ind = wcBenchmarks[wcIndustry ? wcIndustry.value : 'general'];
+
         document.getElementById('wc-dio-val').textContent = dio + ' days';
         document.getElementById('wc-dso-val').textContent = dso + ' days';
         document.getElementById('wc-dpo-val').textContent = dpo + ' days';
         document.getElementById('wc-ccc-val').textContent = ccc + ' Days';
+
         const statusEl = document.getElementById('wc-status');
-        if (ccc <= 20) {
-          statusEl.textContent = 'Highly Efficient Cash Cycle';
+        if (ccc <= ind.good) {
+          statusEl.textContent = `Strong for ${ind.label} (≤ ${ind.good}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-emerald-700';
-        } else if (ccc <= 60) {
-          statusEl.textContent = 'Healthy Working Capital';
+        } else if (ccc <= ind.warn) {
+          statusEl.textContent = `Acceptable for ${ind.label} (≤ ${ind.warn}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-navy-900';
         } else {
-          statusEl.textContent = 'High Working Capital Tie-Up';
+          statusEl.textContent = `High Tie-Up for ${ind.label} (> ${ind.warn}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-amber-700';
         }
         wcChart.data.datasets[0].data = [dio, dso, dpo, ccc];
         wcChart.update();
       }
       [wcDio, wcDso, wcDpo].forEach(el => el.addEventListener('input', updateWC));
+      if (wcIndustry) wcIndustry.addEventListener('change', updateWC);
+      updateWC();
 
       // NTP Performance Chart (2022-2024)
       new Chart(document.getElementById('ntpPerfChart').getContext('2d'), {
