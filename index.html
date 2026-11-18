@@ -623,18 +623,23 @@
             </div>
           </div>
 
-          <div class="lg:col-span-7 grid gap-6 sm:grid-cols-2 items-center">
-            <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="lg:col-span-7 grid gap-6 sm:grid-cols-2 items-stretch">
+            <!-- Hộp 1: Pie Chart -->
+            <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4 flex flex-col justify-center">
               <div class="text-xs font-semibold text-slate-600 mb-2 text-center">Asset Allocation Breakdown</div>
               <div class="relative h-64">
                 <canvas id="portfolioChart"></canvas>
               </div>
-            <div>
-            <div class="text-xs font-semibold text-slate-600">Interactive Mandate Scaling Simulator</div>
-            <p class="mt-1 text-[11px] text-slate-500 leading-relaxed">
-            Adjust capital and time horizon below to see how your projected return scales at the <strong>11.34% p.a.</strong> rate.
-            </p>
             </div>
+
+            <!-- Hộp 2: Simulator (nằm ngang bên cạnh Pie Chart) -->
+            <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4 flex flex-col justify-between space-y-4">
+              <div>
+                <div class="text-xs font-semibold text-slate-600">Interactive Mandate Scaling Simulator</div>
+                <p class="mt-1 text-[11px] text-slate-500 leading-relaxed">
+                  Adjust capital and time horizon below to see how your projected return scales at the <strong>11.34% p.a.</strong> rate.
+                </p>
+              </div>
               <div>
                 <label for="sim-capital" class="flex justify-between text-xs text-slate-600 mb-1">
                   <span>Simulated Capital</span>
@@ -653,6 +658,9 @@
                 <div class="text-[11px] uppercase tracking-wider text-gold-400">Projected Portfolio Value</div>
                 <div id="sim-output" class="mt-1 text-2xl font-bold tabular-nums">$4,453.60</div>
                 <div id="sim-gain" class="text-xs text-emerald-400 tabular-nums mt-0.5">+$453.60 net return</div>
+                <div class="mt-2 border-t border-white/10 pt-2 text-[11px] text-slate-400">
+                  Formula: FV = Capital &times; (1 + 11.34%)<sup>Years</sup>
+                </div>
               </div>
             </div>
           </div>
