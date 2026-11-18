@@ -1247,42 +1247,73 @@
         <span class="rounded-full bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-700">Outstanding Volunteer &bull; CampConnect 2026</span>
       </div>
 
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6">
-          <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Da Nang Orphanage Outreach</div>
-          <h3 class="mt-2 text-lg font-bold text-navy-900">Hoa Mai Orphanage Support</h3>
-          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-            Organized a charitable gift-giving initiative delivering essential supplies and presents directly to <strong>40 children at the Hoa Mai Orphanage</strong> in Da Nang.
-          </p>
-        </div>
-
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6">
-          <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Dec 2023 – Jul 2026</div>
-          <h3 class="mt-2 text-lg font-bold text-navy-900">SEEDS Community Initiatives</h3>
-          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-            Co-led <strong>4 community programs</strong> with <strong>40+ SEEDS scholars</strong>, managing budgets and logistics to deliver medical equipment, wheelchairs, financial aid, and <strong>100+ care packages</strong> to orphanages, social protection centers, and patients.
-          </p>
-        </div>
-
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6">
-          <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Youth Financial Literacy</div>
-          <h3 class="mt-2 text-lg font-bold text-navy-900">Student &amp; High School Mentoring</h3>
-          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-            Delivered university financial planning workshops for <strong>200+ financially-challenged students</strong> and mentored high schoolers at Pacific Links Summer Camp 2025.
-          </p>
-        </div>
-      </div>
-
-      <!-- Community Photo Gallery -->
-      <div class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <div class="mt-8 grid gap-6 lg:grid-cols-12 items-stretch">
+        <!-- SEEDS Community Initiatives + 4 Projects -->
+        <div class="lg:col-span-8 card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between space-y-5">
           <div>
-            <h3 class="text-base font-bold text-navy-900">Community &amp; Volunteering Gallery</h3>
-            <p class="text-xs text-slate-500">Photos from charity visits, youth mentoring, and SEEDS initiatives</p>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Dec 2023 – Jul 2026</span>
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-navy-900">Avg. 40 Student Volunteers / Project</span>
+            </div>
+            <h3 class="mt-2 text-xl font-bold text-navy-900">SEEDS Community Initiatives</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              <strong>Role &amp; Execution:</strong> Planned and organized <strong>4 fundraising-driven community projects</strong>—researching high-demand products to sell for fundraising, setting measurable KPIs, identifying underserved beneficiaries, and structuring aid delivery within raised budgets.
+            </p>
           </div>
-          <button id="quick-upload-comm-btn" class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-slate-100 transition">+ Add Photos</button>
+
+          <div class="grid gap-3 sm:grid-cols-2 border-t border-slate-100 pt-4 text-xs">
+            <div class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
+              <div class="flex items-center justify-between font-bold text-navy-900">
+                <span>Project 1 &bull; Jan 2024</span>
+                <span class="text-gold-600">40 Households</span>
+              </div>
+              <div class="mt-1 font-semibold text-slate-700">Thạch Mỹ, Nam Giang, Quảng Nam</div>
+              <p class="mt-1 text-slate-600 leading-relaxed">Home repairs, rice, and financial aid delivered to 40 local households.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
+              <div class="flex items-center justify-between font-bold text-navy-900">
+                <span>Project 2 &bull; Jul 2026</span>
+                <span class="text-gold-600">Da Nang</span>
+              </div>
+              <div class="mt-1 font-semibold text-slate-700">Da Nang Social Protection Center</div>
+              <p class="mt-1 text-slate-600 leading-relaxed">Donated essential daily supplies and care gifts to residents.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
+              <div class="flex items-center justify-between font-bold text-navy-900">
+                <span>Project 3 &bull; Jan 2025</span>
+                <span class="text-gold-600">30 Packages</span>
+              </div>
+              <div class="mt-1 font-semibold text-slate-700">Thăng Bình, Quảng Nam</div>
+              <p class="mt-1 text-slate-600 leading-relaxed">Provided 30 Tet gift packages and financial support for local families.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
+              <div class="flex items-center justify-between font-bold text-navy-900">
+                <span>Project 4 &bull; Jan</span>
+                <span class="text-gold-600">Da Nang</span>
+              </div>
+              <div class="mt-1 font-semibold text-slate-700">Hoa Mai Orphanage</div>
+              <p class="mt-1 text-slate-600 leading-relaxed">Delivered gifts and financial support directly to children at Hoa Mai Orphanage.</p>
+            </div>
+          </div>
         </div>
-        <div id="community-gallery" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+        <!-- Mentoring -->
+        <div class="lg:col-span-4 card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Youth Financial Literacy</div>
+            <h3 class="mt-2 text-xl font-bold text-navy-900">Student &amp; High School Mentoring</h3>
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+              Delivered university financial planning workshops for <strong>200+ financially-challenged students</strong> and mentored high schoolers at Pacific Links Summer Camp 2025.
+            </p>
+          </div>
+          <div class="mt-6 border-t border-slate-100 pt-4 flex flex-wrap gap-1.5">
+            <span class="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800">200+ Students</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Pacific Links Summer Camp</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1436,13 +1467,6 @@
             <p class="text-xs text-slate-500">Uploaded files are embedded into your portfolio so recruiters can download them directly.</p>
             <input id="ed-doc-input" type="file" accept=".pdf,.doc,.docx,.xlsx,.png,.jpg,.jpeg" multiple class="block w-full text-xs text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-gold-500 file:px-3 py-2 file:text-xs file:font-semibold file:text-navy-950 hover:file:bg-gold-400" />
             <div id="ed-docs-list" class="space-y-2 pt-2"></div>
-          </div>
-
-          <div class="rounded-xl border border-slate-200 p-4 space-y-3">
-            <label class="block text-xs font-bold uppercase tracking-wider text-navy-900">Upload Community / Charity Photos</label>
-            <input id="ed-comm-caption" type="text" placeholder="Photo caption (e.g., Hoa Mai Orphanage visit — 40 children)" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs" />
-            <input id="ed-comm-input" type="file" accept="image/*" multiple class="block w-full text-xs text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-600 file:px-3 py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-emerald-700" />
-            <div id="ed-comm-list" class="space-y-2 pt-1"></div>
           </div>
         </div>
 
@@ -2172,73 +2196,7 @@
         (portfolioState.extraCerts || []).forEach(appendCertCard);
         renderDocuments();
       }
-      function renderCommunityPhotos() {
-        const photos = portfolioState.communityPhotos || [];
-        const gallery = document.getElementById('community-gallery');
-        const edList = document.getElementById('ed-comm-list');
-
-        if (photos.length === 0) {
-          gallery.innerHTML = '<div class="col-span-full rounded-xl border border-dashed border-slate-200 p-8 text-center text-xs text-slate-500">No community photos uploaded yet. Click <strong>+ Add Photos</strong> or open <strong>Owner Edit Mode</strong> in the footer to upload photos from your charity &amp; mentoring activities.</div>';
-          edList.innerHTML = '<div class="text-xs text-slate-400">No community photos uploaded yet.</div>';
-          return;
-        }
-
-        gallery.innerHTML = photos.map(ph => `
-          <div class="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-            <div class="aspect-[4/3] overflow-hidden bg-slate-200">
-              <img src="${ph.dataUrl}" alt="${ph.caption}" class="h-full w-full object-cover" />
-            </div>
-            <div class="p-3 text-xs font-medium text-navy-900">${ph.caption}</div>
-          </div>
-        `).join('');
-
-        edList.innerHTML = photos.map((ph, i) => `
-          <div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-xs border border-slate-200">
-            <span class="truncate font-medium text-navy-900 pr-2">${ph.caption}</span>
-            <button data-comm-del="${i}" class="comm-del-btn text-rose-600 font-semibold hover:underline">Remove</button>
-          </div>
-        `).join('');
-
-        edList.querySelectorAll('.comm-del-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const idx = Number(btn.getAttribute('data-comm-del'));
-            portfolioState.communityPhotos.splice(idx, 1);
-            syncStateTag();
-            renderCommunityPhotos();
-          });
-        });
-      }
-
-      document.getElementById('quick-upload-comm-btn').addEventListener('click', () => {
-        document.getElementById('open-editor-btn').click();
-        const filesTab = document.querySelector('[data-etab="etab-files"]');
-        if (filesTab) filesTab.click();
-      });
-
-      document.getElementById('ed-comm-input').addEventListener('change', (e) => {
-        const files = Array.from(e.target.files);
-        const captionInput = document.getElementById('ed-comm-caption');
-        const customCap = captionInput.value.trim();
-        files.forEach(file => {
-          const reader = new FileReader();
-          reader.onload = () => {
-            if (!portfolioState.communityPhotos) portfolioState.communityPhotos = [];
-            portfolioState.communityPhotos.push({
-              caption: customCap || file.name.replace(/\.[^.]+$/, ''),
-              dataUrl: reader.result
-            });
-            syncStateTag();
-            renderCommunityPhotos();
-            showToast('Community photo added!');
-          };
-          reader.readAsDataURL(file);
-        });
-        captionInput.value = '';
-        e.target.value = '';
-      });
-
       applyStateToDOM();
-      renderCommunityPhotos();
 
       // Documents Modal
       const docsModal = document.getElementById('docs-modal');
