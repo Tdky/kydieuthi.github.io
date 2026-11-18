@@ -102,6 +102,7 @@
         <a href="#analysis" class="hover:text-navy-900 transition">Financial Analysis</a>
         <a href="#certifications" class="hover:text-navy-900 transition">Certifications</a>
         <a href="#community" class="hover:text-navy-900 transition">Community</a>
+        <a href="#other" class="hover:text-navy-900 transition">Other</a>
       </nav>
 
       <div class="flex items-center gap-2.5">
@@ -126,6 +127,7 @@
         <a href="#analysis" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Financial Analysis</a>
         <a href="#certifications" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Certifications</a>
         <a href="#community" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Community</a>
+        <a href="#other" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Other</a>
       </div>
     </div>
   </header>
@@ -137,7 +139,7 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 rounded-full border border-gold-500/35 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gold-400">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            <span id="hero-badge">Open to Corporate Finance, FP&amp;A, Controlling &amp; Valuation Roles (Ho Chi Minh City)</span>
+            <span id="hero-badge">Open to Corporate Finance, FP&amp;A, Controlling &amp; Valuation Roles (HCMC / Da Nang)</span>
           </div>
 
           <h1 id="hero-name" class="font-serif text-3xl font-bold tracking-tight text-white sm:text-5xl leading-[1.15]">
@@ -225,7 +227,8 @@
           <div class="lg:col-span-7">
             <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Background &amp; Direction</div>
             <p id="about-p2" class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous learning and hands-on practice in financial modeling, accounting fundamentals, and data analysis. While I am early in my career, I bring curiosity, adaptability, and a strong willingness to learn from real-world operations. I am looking for a Finance Internship opportunity from December 2026 in Ho Chi Minh City.            </p>
+              Senior Financial Management undergraduate (GPA 3.58/4.0, Fluent English, Beginner Chinese) aiming to become a seasoned finance specialist, currently at the start of my career with hands-on experience in DCF valuation, multi-asset portfolio management (+11.34% ROI), and Power BI analytics. Proven track record in authoring 100+ compliance-checked finance articles alongside 100+ hours of self-directed finance coursework on Coursera. Seeking a full-time or part-time Finance Internship (FP&amp;A, Controlling, or Valuation) from December 2026 in HCMC or Da Nang to deliver decision-ready financial analysis.
+            </p>
           </div>
         </div>
       </div>
@@ -370,7 +373,7 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
               <span class="text-xs font-medium text-slate-500">Mar 2024 – Aug 2025</span>
             </div>
             <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Educational Content Creator Intern</h3>
-            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; Ho Chi Minh City</p>
+            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; HCMC</p>
 
             <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
               <div>
@@ -562,11 +565,13 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
           <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Financial Analysis Workbench</h2>
         </div>
         <!-- Workbench Tabs -->
-        <div class="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm" role="tablist">
+        <div class="inline-flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-1 shadow-sm" role="tablist">
           <button data-tab="tab-portfolio" class="analysis-tab rounded-lg bg-navy-900 px-3.5 py-2 text-xs font-semibold text-white transition">Portfolio Analytics</button>
           <button data-tab="tab-dcf" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">DCF Valuation Lab</button>
           <button data-tab="tab-wc" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Working Capital (CCC)</button>
           <button data-tab="tab-ntp" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">NTP (HNX) Case Study</button>
+          <button data-tab="tab-ops" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Ops Driver &rarr; FCF</button>
+          <button data-tab="tab-bva" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BvA Variance Bridge</button>
         </div>
       </div>
 
@@ -845,6 +850,161 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
           </div>
         </div>
       </div>
+
+      <!-- Tab 5: Operational Driver -> FCF Model -->
+      <div id="tab-ops" class="analysis-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+        <div class="grid gap-8 lg:grid-cols-12 items-start">
+          <div class="lg:col-span-5 space-y-3.5">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Operational Modeling</div>
+              <h3 class="mt-1 text-xl font-bold text-navy-900">Operational Driver &rarr; Unlevered FCF</h3>
+              <p class="mt-1 text-xs text-slate-500">Connect revenue growth, operating margins, CapEx, and working capital drivers directly to 5-year Unlevered Free Cash Flow.</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-slate-600">Base Revenue (Year 0)</span><strong id="ops-rev-val" class="tabular-nums text-navy-900">$50.0M</strong></div>
+              <input id="ops-rev" type="range" min="10" max="200" step="5" value="50" class="w-full accent-navy-900" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-slate-600">Revenue Growth (% YoY)</span><strong id="ops-growth-val" class="tabular-nums text-navy-900">12.0%</strong></div>
+              <input id="ops-growth" type="range" min="2" max="30" step="0.5" value="12" class="w-full accent-navy-900" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs"><span class="text-slate-600">EBITDA Margin (% of Rev)</span><strong id="ops-ebitda-val" class="tabular-nums text-navy-900">22.0%</strong></div>
+              <input id="ops-ebitda" type="range" min="8" max="45" step="0.5" value="22" class="w-full accent-navy-900" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">D&amp;A (% Rev)</span><strong id="ops-da-val" class="tabular-nums text-navy-900">4.0%</strong></div>
+                <input id="ops-da" type="range" min="1" max="10" step="0.5" value="4" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">CapEx (% Rev)</span><strong id="ops-capex-val" class="tabular-nums text-navy-900">5.0%</strong></div>
+                <input id="ops-capex" type="range" min="1" max="15" step="0.5" value="5" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Tax Rate (%)</span><strong id="ops-tax-val" class="tabular-nums text-navy-900">20%</strong></div>
+                <input id="ops-tax" type="range" min="10" max="30" step="1" value="20" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">&Delta;NWC (% &Delta;Rev)</span><strong id="ops-nwc-val" class="tabular-nums text-navy-900">10%</strong></div>
+                <input id="ops-nwc" type="range" min="0" max="25" step="1" value="10" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="rounded-xl bg-navy-900 p-4 text-white">
+                <div class="text-[11px] uppercase tracking-wider text-gold-400">5-Yr Cumulative FCF</div>
+                <div id="ops-cum-fcf" class="mt-1 text-2xl font-bold tabular-nums">$0.0M</div>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div class="text-[11px] uppercase tracking-wider text-slate-500">Y5 FCF / EBITDA</div>
+                <div id="ops-conv" class="mt-1 text-2xl font-bold text-navy-900 tabular-nums">0.0%</div>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400">Formula: Unlevered FCF = EBIT &times; (1 &minus; Tax) + D&amp;A &minus; CapEx &minus; &Delta;NWC.</p>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+              <div class="text-xs font-semibold text-navy-900 mb-2">5-Year Driver Forecast: Revenue, EBITDA &amp; Unlevered FCF ($M)</div>
+              <div class="relative h-64">
+                <canvas id="opsChart"></canvas>
+              </div>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-xs text-right tabular-nums">
+                <thead class="bg-slate-50 text-slate-500 uppercase text-[11px]">
+                  <tr>
+                    <th class="px-3 py-2 text-left">Metric ($M)</th>
+                    <th class="px-3 py-2">Y1</th>
+                    <th class="px-3 py-2">Y2</th>
+                    <th class="px-3 py-2">Y3</th>
+                    <th class="px-3 py-2">Y4</th>
+                    <th class="px-3 py-2">Y5</th>
+                  </tr>
+                </thead>
+                <tbody id="ops-table-body" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6: Budget vs. Actual (BvA) Variance & Waterfall -->
+      <div id="tab-bva" class="analysis-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+        <div class="grid gap-8 lg:grid-cols-12 items-start">
+          <div class="lg:col-span-5 space-y-3.5">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-gold-600">Controlling &amp; FP&amp;A</div>
+              <h3 class="mt-1 text-xl font-bold text-navy-900">Budget vs. Actual (BvA) Variance Bridge</h3>
+              <p class="mt-1 text-xs text-slate-500">Decompose Operating Profit variance into Volume, Price, COGS, and OpEx effects to pinpoint performance drivers.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Budget Vol ('000)</span><strong id="bva-vb-val" class="tabular-nums text-navy-900">100</strong></div>
+                <input id="bva-vb" type="range" min="50" max="200" step="5" value="100" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Actual Vol ('000)</span><strong id="bva-va-val" class="tabular-nums text-navy-900">112</strong></div>
+                <input id="bva-va" type="range" min="50" max="200" step="5" value="112" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Budget Price ($)</span><strong id="bva-pb-val" class="tabular-nums text-navy-900">$50.0</strong></div>
+                <input id="bva-pb" type="range" min="20" max="120" step="2" value="50" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Actual Price ($)</span><strong id="bva-pa-val" class="tabular-nums text-navy-900">$48.0</strong></div>
+                <input id="bva-pa" type="range" min="20" max="120" step="2" value="48" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Budget COGS/u ($)</span><strong id="bva-cb-val" class="tabular-nums text-navy-900">$30.0</strong></div>
+                <input id="bva-cb" type="range" min="10" max="80" step="1" value="30" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Actual COGS/u ($)</span><strong id="bva-ca-val" class="tabular-nums text-navy-900">$28.5</strong></div>
+                <input id="bva-ca" type="range" min="10" max="80" step="0.5" value="28.5" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Budget OpEx ($K)</span><strong id="bva-ob-val" class="tabular-nums text-navy-900">$1,000K</strong></div>
+                <input id="bva-ob" type="range" min="400" max="2500" step="50" value="1000" class="w-full accent-navy-900" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs"><span class="text-slate-600">Actual OpEx ($K)</span><strong id="bva-oa-val" class="tabular-nums text-navy-900">$1,080K</strong></div>
+                <input id="bva-oa" type="range" min="400" max="2500" step="50" value="1080" class="w-full accent-navy-900" />
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5 pt-1">
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                <div class="text-[10px] uppercase tracking-wider text-slate-500">Budget EBIT</div>
+                <div id="bva-ebit-b" class="mt-1 text-lg font-bold text-navy-900 tabular-nums">$1,000K</div>
+              </div>
+              <div class="rounded-xl bg-navy-900 p-3 text-white">
+                <div class="text-[10px] uppercase tracking-wider text-gold-400">Actual EBIT</div>
+                <div id="bva-ebit-a" class="mt-1 text-lg font-bold tabular-nums">$1,104K</div>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                <div class="text-[10px] uppercase tracking-wider text-slate-500">Net Variance</div>
+                <div id="bva-net-var" class="mt-1 text-lg font-bold text-emerald-700 tabular-nums">+$104K</div>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400">Exact bridge: Volume Var = &Delta;V &times; Budget GM/u; Price Var = V<sub>actual</sub> &times; &Delta;P; COGS Var = &minus;V<sub>actual</sub> &times; &Delta;C.</p>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+              <div class="text-xs font-semibold text-navy-900 mb-2">Operating Profit Waterfall Bridge: Budget &rarr; Actual ($K)</div>
+              <div class="relative h-72">
+                <canvas id="bvaChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 7. Certifications -->
@@ -994,6 +1154,54 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
           <button id="quick-upload-comm-btn" class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-navy-900 hover:bg-slate-100 transition">+ Add Photos</button>
         </div>
         <div id="community-gallery" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- 9. Other & Personal Interests -->
+    <section id="other" class="scroll-mt-24 pt-12">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-gold-600">09 / Beyond Finance</div>
+        <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Other &amp; Personal Interests</h2>
+        <p class="mt-1 text-sm text-slate-500">How I recharge, stay disciplined, and keep curiosity alive outside spreadsheets.</p>
+      </div>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm card-hover">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 text-sm font-bold">01</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Sports &amp; Active Balance</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            I enjoy team and racket sports—especially <strong>volleyball</strong> and <strong>badminton</strong>—and keep a steady routine of <strong>running</strong> and <strong>yoga</strong> to stay focused and maintain work-life balance.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Volleyball</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Badminton</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Running</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Yoga</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm card-hover">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 text-sm font-bold">02</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Solo Travel &amp; Exploration</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            Passionate about traveling and stepping outside my comfort zone. I have completed <strong>3 solo trips</strong> across domestic and international destinations, strengthening my adaptability and planning skills.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="rounded-md bg-gold-500/15 px-2.5 py-1 text-xs font-semibold text-navy-900">3 Solo Trips</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Domestic &amp; International</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm card-hover">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 text-sm font-bold">03</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Daily Fuel: Coffee Ritual</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            A dedicated fan of Vietnamese iced milk coffee (<em>cà phê sữa đá</em>)—specifically an <strong>80% Robusta / 20% Arabica</strong> blend for bold energy and balanced aroma during deep analytical work.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">Cà Phê Sữa Đá</span>
+            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-navy-900">80% Robusta / 20% Arabica</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1451,6 +1659,184 @@ Senior Financial Management student (GPA 3.58/4.0) with a habit of continuous le
           scales: { y: { min: 6.8, max: 7.8 } }
         }
       });
+
+      // Tab 5: Operational Driver -> FCF Model
+      const opsRev = document.getElementById('ops-rev');
+      const opsGrowth = document.getElementById('ops-growth');
+      const opsEbitda = document.getElementById('ops-ebitda');
+      const opsDa = document.getElementById('ops-da');
+      const opsCapex = document.getElementById('ops-capex');
+      const opsTax = document.getElementById('ops-tax');
+      const opsNwc = document.getElementById('ops-nwc');
+
+      const opsChart = new Chart(document.getElementById('opsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Y1', 'Y2', 'Y3', 'Y4', 'Y5'],
+          datasets: [
+            { label: 'Revenue ($M)', data: [], backgroundColor: '#CBD5E1', borderRadius: 4 },
+            { label: 'EBITDA ($M)', data: [], backgroundColor: '#0B132B', borderRadius: 4 },
+            { label: 'Unlevered FCF ($M)', data: [], backgroundColor: '#059669', borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } },
+          scales: { y: { ticks: { callback: v => '$' + v + 'M' } } }
+        }
+      });
+
+      function updateOps() {
+        const baseRev = Number(opsRev.value);
+        const g = Number(opsGrowth.value) / 100;
+        const mEbitda = Number(opsEbitda.value) / 100;
+        const pDa = Number(opsDa.value) / 100;
+        const pCapex = Number(opsCapex.value) / 100;
+        const tax = Number(opsTax.value) / 100;
+        const pNwc = Number(opsNwc.value) / 100;
+
+        document.getElementById('ops-rev-val').textContent = '$' + baseRev.toFixed(1) + 'M';
+        document.getElementById('ops-growth-val').textContent = (g * 100).toFixed(1) + '%';
+        document.getElementById('ops-ebitda-val').textContent = (mEbitda * 100).toFixed(1) + '%';
+        document.getElementById('ops-da-val').textContent = (pDa * 100).toFixed(1) + '%';
+        document.getElementById('ops-capex-val').textContent = (pCapex * 100).toFixed(1) + '%';
+        document.getElementById('ops-tax-val').textContent = Math.round(tax * 100) + '%';
+        document.getElementById('ops-nwc-val').textContent = Math.round(pNwc * 100) + '%';
+
+        const revs = [], ebitdas = [], nopats = [], fcfs = [];
+        let prevRev = baseRev;
+        let cumFcf = 0;
+        for (let t = 1; t <= 5; t++) {
+          const r = prevRev * (1 + g);
+          const ebitda = r * mEbitda;
+          const da = r * pDa;
+          const ebit = ebitda - da;
+          const nopat = ebit * (1 - tax);
+          const capex = r * pCapex;
+          const dnwc = (r - prevRev) * pNwc;
+          const fcf = nopat + da - capex - dnwc;
+          revs.push(Number(r.toFixed(2)));
+          ebitdas.push(Number(ebitda.toFixed(2)));
+          nopats.push(Number(nopat.toFixed(2)));
+          fcfs.push(Number(fcf.toFixed(2)));
+          cumFcf += fcf;
+          prevRev = r;
+        }
+
+        document.getElementById('ops-cum-fcf').textContent = '$' + cumFcf.toFixed(1) + 'M';
+        const conv = ebitdas[4] > 0 ? (fcfs[4] / ebitdas[4]) * 100 : 0;
+        document.getElementById('ops-conv').textContent = conv.toFixed(1) + '%';
+
+        opsChart.data.datasets[0].data = revs;
+        opsChart.data.datasets[1].data = ebitdas;
+        opsChart.data.datasets[2].data = fcfs;
+        opsChart.update();
+
+        const tbody = document.getElementById('ops-table-body');
+        const row = (label, arr, bold) => `<tr class="${bold ? 'bg-emerald-50/60 font-bold text-navy-900' : 'text-slate-700'}"><td class="px-3 py-2 text-left font-medium">${label}</td>${arr.map(v => `<td class="px-3 py-2">$${v.toFixed(1)}</td>`).join('')}</tr>`;
+        tbody.innerHTML = row('Revenue', revs, false) + row('EBITDA', ebitdas, false) + row('NOPAT', nopats, false) + row('Unlevered FCF', fcfs, true);
+      }
+      [opsRev, opsGrowth, opsEbitda, opsDa, opsCapex, opsTax, opsNwc].forEach(el => el.addEventListener('input', updateOps));
+      updateOps();
+
+      // Tab 6: Budget vs. Actual (BvA) Variance & Waterfall
+      const bvaVb = document.getElementById('bva-vb');
+      const bvaVa = document.getElementById('bva-va');
+      const bvaPb = document.getElementById('bva-pb');
+      const bvaPa = document.getElementById('bva-pa');
+      const bvaCb = document.getElementById('bva-cb');
+      const bvaCa = document.getElementById('bva-ca');
+      const bvaOb = document.getElementById('bva-ob');
+      const bvaOa = document.getElementById('bva-oa');
+
+      const bvaChart = new Chart(document.getElementById('bvaChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Budget EBIT', 'Volume Var', 'Price Var', 'COGS Var', 'OpEx Var', 'Actual EBIT'],
+          datasets: [{
+            label: 'EBIT Bridge ($K)',
+            data: [],
+            backgroundColor: [],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => {
+                  const raw = ctx.raw;
+                  const diff = raw[1] - raw[0];
+                  if (ctx.dataIndex === 0 || ctx.dataIndex === 5) return `EBIT: $${raw[1].toFixed(0)}K`;
+                  return `Variance: ${diff >= 0 ? '+' : ''}$${diff.toFixed(0)}K`;
+                }
+              }
+            }
+          },
+          scales: { y: { ticks: { callback: v => '$' + v + 'K' } } }
+        }
+      });
+
+      function updateBva() {
+        const vb = Number(bvaVb.value), va = Number(bvaVa.value);
+        const pb = Number(bvaPb.value), pa = Number(bvaPa.value);
+        const cb = Number(bvaCb.value), ca = Number(bvaCa.value);
+        const ob = Number(bvaOb.value), oa = Number(bvaOa.value);
+
+        document.getElementById('bva-vb-val').textContent = vb;
+        document.getElementById('bva-va-val').textContent = va;
+        document.getElementById('bva-pb-val').textContent = '$' + pb.toFixed(1);
+        document.getElementById('bva-pa-val').textContent = '$' + pa.toFixed(1);
+        document.getElementById('bva-cb-val').textContent = '$' + cb.toFixed(1);
+        document.getElementById('bva-ca-val').textContent = '$' + ca.toFixed(1);
+        document.getElementById('bva-ob-val').textContent = '$' + ob.toLocaleString() + 'K';
+        document.getElementById('bva-oa-val').textContent = '$' + oa.toLocaleString() + 'K';
+
+        const ebitB = vb * (pb - cb) - ob;
+        const ebitA = va * (pa - ca) - oa;
+        const volVar = (va - vb) * (pb - cb);
+        const priceVar = va * (pa - pb);
+        const cogsVar = -va * (ca - cb);
+        const opexVar = -(oa - ob);
+        const netVar = ebitA - ebitB;
+
+        document.getElementById('bva-ebit-b').textContent = '$' + Math.round(ebitB).toLocaleString() + 'K';
+        document.getElementById('bva-ebit-a').textContent = '$' + Math.round(ebitA).toLocaleString() + 'K';
+        const netEl = document.getElementById('bva-net-var');
+        netEl.textContent = (netVar >= 0 ? '+$' : '-$') + Math.abs(Math.round(netVar)).toLocaleString() + 'K';
+        netEl.className = 'mt-1 text-lg font-bold tabular-nums ' + (netVar >= 0 ? 'text-emerald-700' : 'text-rose-600');
+
+        const s1 = ebitB;
+        const s2 = s1 + volVar;
+        const s3 = s2 + priceVar;
+        const s4 = s3 + cogsVar;
+        const s5 = s4 + opexVar;
+
+        const barRange = (a, b) => [Math.min(a, b), Math.max(a, b)];
+        bvaChart.data.datasets[0].data = [
+          [0, ebitB],
+          barRange(s1, s2),
+          barRange(s2, s3),
+          barRange(s3, s4),
+          barRange(s4, s5),
+          [0, ebitA]
+        ];
+        bvaChart.data.datasets[0].backgroundColor = [
+          '#0B132B',
+          volVar >= 0 ? '#059669' : '#E11D48',
+          priceVar >= 0 ? '#059669' : '#E11D48',
+          cogsVar >= 0 ? '#059669' : '#E11D48',
+          opexVar >= 0 ? '#059669' : '#E11D48',
+          '#C5A059'
+        ];
+        bvaChart.update();
+      }
+      [bvaVb, bvaVa, bvaPb, bvaPa, bvaCb, bvaCa, bvaOb, bvaOa].forEach(el => el.addEventListener('input', updateBva));
+      updateBva();
 
       // Certification Filters
       const certBtns = document.querySelectorAll('.cert-filter-btn');
