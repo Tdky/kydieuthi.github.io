@@ -35,6 +35,12 @@
     };
   </script>
   <style>
+    html {
+      font-size: 17px;
+    }
+    main p strong, main li strong {
+      font-weight: 600;
+    }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background-color: #F8FAFC;
@@ -105,7 +111,7 @@
         </div>
 
         <h1 class="font-serif text-2xl sm:text-4xl font-bold tracking-tight text-navy-900 leading-snug">
-          Welcome - Thank You for Your Time!
+          Welcome &mdash; Thank You for Your Time
         </h1>
 
         <div class="space-y-3 border-t border-slate-200/80 pt-5 text-sm sm:text-base text-slate-700 leading-relaxed">
@@ -144,13 +150,13 @@
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-medium text-slate-600">
         <a href="#about" class="hover:text-navy-900 transition">About Me</a>
+        <a href="#analysis" class="hover:text-navy-900 transition">Financial Analysis</a>
         <a href="#education" class="hover:text-navy-900 transition">Education</a>
         <a href="#experience" class="hover:text-navy-900 transition">Experience</a>
         <a href="#projects" class="hover:text-navy-900 transition">Projects</a>
         <a href="#skills" class="hover:text-navy-900 transition">Finance Skills</a>
-        <a href="#analysis" class="hover:text-navy-900 transition">Financial Analysis</a>
         <a href="#certifications" class="hover:text-navy-900 transition">Certifications</a>
         <a href="#community" class="hover:text-navy-900 transition">Community</a>
         <a href="#other" class="hover:text-navy-900 transition">Other</a>
@@ -171,11 +177,11 @@
     <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden">
       <div class="grid grid-cols-2 gap-2 text-sm font-medium text-slate-700">
         <a href="#about" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">About Me</a>
+        <a href="#analysis" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Financial Analysis</a>
         <a href="#education" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Education</a>
         <a href="#experience" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Experience</a>
         <a href="#projects" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Projects</a>
         <a href="#skills" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Finance Skills</a>
-        <a href="#analysis" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Financial Analysis</a>
         <a href="#certifications" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Certifications</a>
         <a href="#community" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Community</a>
         <a href="#other" class="mobile-nav-link rounded-lg px-3 py-2 hover:bg-slate-50">Other</a>
@@ -285,373 +291,11 @@
       </div>
     </section>
 
-    <!-- 2. Education -->
-    <section id="education" class="scroll-mt-24">
-      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">02 / Academic Foundation</div>
-      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Education &amp; Academic Distinctions</h2>
-
-      <div class="mt-8 grid gap-6 lg:grid-cols-12 items-start">
-        <div class="lg:col-span-7 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
-          <div class="flex flex-wrap items-start justify-between gap-3 border-b border-slate-100 pb-4">
-            <div>
-              <h3 class="text-xl font-bold text-navy-900">University of Economics – The University of Da Nang</h3>
-              <p class="text-sm font-medium text-slate-600 mt-0.5">Bachelor of Business Administration | Major: Financial Management</p>
-            </div>
-            <span class="rounded-full bg-navy-900 px-3.5 py-1 text-xs font-semibold text-gold-400">2023 – 2027</span>
-          </div>
-
-          <div class="mt-5 grid grid-cols-2 gap-4">
-            <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
-              <div class="text-xs text-slate-500">Cumulative GPA</div>
-              <div class="text-xl font-bold text-navy-900 tabular-nums mt-0.5">3.58 / 4.0</div>
-            </div>
-            <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
-              <div class="text-xs text-slate-500">Target Graduation</div>
-              <div class="text-xl font-bold text-navy-900 mt-0.5">Jul 2027</div>
-            </div>
-          </div>
-
-          <div class="mt-6 space-y-3">
-            <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Core Finance Coursework</div>
-            <div class="grid gap-3 sm:grid-cols-2">
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Financial Analysis</span>
-                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Financial statement decomposition, ratio benchmarking, and earnings quality.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Advanced Financial Mgmt</span>
-                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Capital budgeting, corporate valuation (DCF, NPV), and optimal capital structure.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Working Capital Mgmt</span>
-                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Cash flow optimization, short-term asset management, and 5Cs credit evaluation.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Financial Risk Mgmt</span>
-                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Identifying, measuring, and hedging market, credit, and operational financial risks.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Financial Derivatives</span>
-                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Arbitrage &amp; put-call parity; hedging and pricing forwards, futures, and options.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Principles of Accounting</span>
-                  <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">Grade B+</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Double-entry bookkeeping, financial statement preparation, and accounting fundamentals.</p>
-              </div>
-
-              <div class="rounded-xl border border-slate-200/80 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">Project Mgmt &amp; Negotiation</span>
-                  <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">Grade B+</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Timeline governance, stakeholder alignment, and commercial deal structuring.</p>
-              </div>
-
-              <div class="rounded-xl border border-amber-200/90 bg-amber-50/40 p-3.5">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="font-semibold text-sm text-navy-900">FinTech</span>
-                  <span class="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">In Progress</span>
-                </div>
-                <p class="mt-1 text-xs text-slate-600">Core mechanics of blockchain technology, smart contracts, and decentralized finance (DeFi).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 space-y-5">
-          <div class="rounded-2xl border border-gold-500/30 bg-navy-900 p-6 text-white shadow-sm">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-gold-400">Merit Scholarship</span>
-              <span class="text-xs text-slate-300">2019 – 2027 (7 Years)</span>
-            </div>
-            <h3 class="mt-2 text-lg font-bold">
-              SEEDS Scholar — <a href="https://pacificlinks.org/" target="_blank" rel="noopener noreferrer" class="underline decoration-gold-400/60 hover:text-gold-400 transition">Pacific Links Foundation</a>
-            </h3>
-            <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
-              Awarded 7-year merit-based scholarship under the PACT criteria (Passion, Ambition, Curiosity, Tenacity) recognizing sustained academic excellence and community leadership.
-            </p>
-            <p class="mt-2.5 text-sm text-gold-400/95 leading-relaxed">
-              Deeply grateful to Pacific Links Foundation for opening my access to education and providing structured training that shaped my growth.
-            </p>
-          </div>
-
-          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm flex items-center justify-between">
-            <div>
-              <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">High School Foundation</div>
-              <div class="text-sm font-bold text-navy-900 mt-0.5">Quốc Học Huế Gifted High School</div>
-              <div class="text-xs text-slate-600">Informatics Track — Algorithmic Logic &amp; C++</div>
-            </div>
-            <span class="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">C++</span>
-          </div>
-
-          <div class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm space-y-3.5">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Academic Collaboration</span>
-              <span class="text-xs font-medium text-slate-500">2023 – 2026</span>
-            </div>
-            <div>
-              <h3 class="text-base font-bold text-navy-900">Cross-Team Adaptability &amp; Teamwork</h3>
-              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Voluntarily teamed up with peers outside my major to embrace diverse perspectives and prepare for cross-functional workplaces—leading with two core questions: <em>&ldquo;How can we do this better?&rdquo;</em> and <em>&ldquo;How can each teammate leverage their strengths while growing in areas for improvement?&rdquo;</em>
-              </p>
-            </div>
-            <div class="space-y-1.5 border-t border-slate-100 pt-3 text-xs">
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Developing Mgmt Skills</strong> &bull; HRM</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.3)</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Business Communication</strong> &bull; MIS</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.1)</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Adv. Financial Mgmt</strong> &bull; Int'l (Laos)</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.0)</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Taxation</strong> &bull; Public Finance</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Supply Chain Mgmt</strong> &bull; SCM</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-slate-700"><strong class="text-navy-900">Financial Analysis</strong> &bull; Corp. Finance</span>
-                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Professional Experience -->
-    <section id="experience" class="scroll-mt-24">
-      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">03 / Career Track Record</div>
-      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Work Experience</h2>
-
-      <div class="mt-8 grid gap-6 md:grid-cols-2 items-stretch">
-        <!-- Role 1 -->
-        <article class="card-hover flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">Finance Content</span>
-              <span class="text-xs font-medium text-slate-500">Mar 2024 – Aug 2025</span>
-            </div>
-            <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Educational Content Creator Intern</h3>
-            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; HCMC</p>
-
-            <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">1. Objective</div>
-                <p class="mt-1 text-slate-600 leading-relaxed">Build accessible, legally compliant personal finance education for workers and students.</p>
-              </div>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">2. Actions &amp; Results</div>
-                <p class="mt-1 text-slate-600 leading-relaxed">Authored <strong>100+ finance articles</strong> &amp; 20+ migration pieces (<strong>85% first-draft approval</strong>); delivered workshop for <strong>200+ students</strong>.</p>
-              </div>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">3. Skills Learned</div>
-                <div class="mt-1.5 flex flex-wrap gap-1.5">
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Regulatory Compliance Check</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Financial Communication</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Workshop Presentation</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Progress reporting</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Receptiveness to feedback</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-5 border-t border-slate-100 pt-3.5 text-xs text-slate-500">
-            <span class="font-bold uppercase tracking-wider text-navy-900">Reason for Completion:</span> Achieved my initial goals in core fundamentals, idea articulation, and office operations; now seeking to advance my analytical skills and domain expertise.
-          </div>
-        </article>
-
-        <!-- Role 2 -->
-        <article class="card-hover flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">Pricing &amp; Revenue</span>
-              <span class="text-xs font-medium text-slate-500">Jul 2023 – Jan 2024</span>
-            </div>
-            <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Freelance OTA Sales &amp; Pricing Manager</h3>
-            <p class="text-xs font-medium text-slate-500 mt-0.5">Airbnb Operations &bull; Da Nang</p>
-
-            <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">1. Objective</div>
-                <p class="mt-1 text-slate-600 leading-relaxed">Maximize unit occupancy and net revenue through dynamic seasonal pricing.</p>
-              </div>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">2. Actions &amp; Results</div>
-                <p class="mt-1 text-slate-600 leading-relaxed">Managed seasonal rate adjustments, occupancy tracking, listing optimization, and international guest support.</p>
-              </div>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">3. Skills Learned</div>
-                <div class="mt-1.5 flex flex-wrap gap-1.5">
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Customer Communication &amp; Service</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Content &amp; Visual Optimization</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Extranet System Proficiency</span>
-                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Basic Rate &amp; Revenue Management</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-5 border-t border-slate-100 pt-3.5 text-xs text-slate-500">
-            <span class="font-bold uppercase tracking-wider text-navy-900">Reason for Completion:</span> Transitioned to focus on specialized finance coursework and PAXU internship.
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 4. Financial Projects -->
-  <section id="projects" class="scroll-mt-24 pt-12">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-widest text-gold-600">04 / Applied Execution</div>
-          <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Financial Projects &amp; Achievements</h2>
-        </div>
-        <p class="text-xs text-slate-500">Click any project card to inspect full methodology &amp; outcomes</p>
-      </div>
-
-      <div id="projects-grid" class="mt-8 grid gap-6 md:grid-cols-2 items-stretch">
-        <!-- Project 1 -->
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">+11.34% Annual ROI</span>
-              <span class="text-xs font-medium text-slate-500">Apr 2025 – Apr 2026</span>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-navy-900">Personal Investment Portfolio Management</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Managed a <strong>$4,000 multi-asset portfolio</strong> for an individual investor across 4 asset classes: <strong>60% Mutual Funds</strong>, <strong>20% Equities</strong>, <strong>15% Gold</strong>, and <strong>5% Cash</strong>.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-1.5">
-              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Asset Allocation</span>
-              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Market Research</span>
-              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Trend Analysis &amp; Pattern Recognition</span>
-              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Emotional Regulation</span>
-              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Self-Directed Learning</span>
-
-
-            </div>
-          </div>
-          <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
-            <div class="text-xs text-slate-500">Ending Value: <strong class="text-navy-900 tabular-nums">$4,453.60</strong></div>
-            <button data-project="portfolio" class="project-modal-btn text-xs font-semibold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1 transition">
-              <span>View Case Brief</span>
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">1st Place Winner (English Track)</span>
-              <span class="text-xs font-medium text-slate-500">May 2024 – May 2025</span>
-            </div>
-            <h3 class="mt-4 text-xl font-bold text-navy-900">Success Entrepreneurship Track 2024 — Agri-Tourism</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Led a 3-member cross-functional team (Logistics &amp; Marketing) to <strong>1st Place</strong> against scholars from <strong>UEH</strong> and <strong>Fulbright University</strong>. Conducted field research across <strong>8 traditional craft villages</strong> (Hue, Da Nang, Quang Nam) to build the business model, market entry strategy, and <strong>financial forecasts</strong>.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-1.5">
-              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Pitch Deck</span>
-              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Financial Forecasting</span>
-              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Field Research</span>
-              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Team Leadership</span>
-            </div>
-          </div>
-          <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
-            <div class="text-xs text-slate-500">Role: <strong class="text-navy-900">Team Leader &amp; Financial Modeler</strong></div>
-            <button data-project="set2024" class="project-modal-btn text-xs font-semibold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1 transition">
-              <span>View Case Brief</span>
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Finance Skills -->
-   <section id="skills" class="scroll-mt-24 pt-12">
-      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">05 / Core Capabilities</div>
-      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Finance Skills &amp; Technical Stack</h2>
-
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">FIN</div>
-          <h3 class="mt-4 text-lg font-bold text-navy-900">Corporate Finance &amp; Valuation</h3>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">DCF Valuation</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">NPV &amp; Capital Budgeting</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Financial Statement Analysis</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Working Capital Optimization</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">5Cs Credit Evaluation</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Derivatives &amp; Risk Hedging</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Portfolio Allocation</span>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">BI</div>
-          <h3 class="mt-4 text-lg font-bold text-navy-900">Data Analytics &amp; Engineering</h3>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Excel (Reconciliation &amp; Modeling)</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Power BI</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">DAX &amp; Time Intelligence</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">SQL</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Python</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">C++</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">AI in Financial Services</span>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">EXEC</div>
-          <h3 class="mt-4 text-lg font-bold text-navy-900">Leadership &amp; Global Fluency</h3>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800">English (Fluent / C2)</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Chinese (Beginner)</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Vietnamese (Native)</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Regulatory Compliance</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Stakeholder Pitching</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Negotiation</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 6. Financial Analysis (Interactive Workbench) -->
    <section id="analysis" class="scroll-mt-24 pt-12">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div class="text-xs font-bold uppercase tracking-widest text-gold-600">06 / Interactive Modeling</div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gold-600">02 / Interactive Modeling</div>
           <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Financial Analysis Workbench</h2>
         </div>
         <!-- Workbench Tabs -->
@@ -1131,6 +775,368 @@
                 <canvas id="bvaChart"></canvas>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Education -->
+    <section id="education" class="scroll-mt-24">
+      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">03 / Academic Foundation</div>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Education &amp; Academic Distinctions</h2>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-12 items-start">
+        <div class="lg:col-span-7 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
+          <div class="flex flex-wrap items-start justify-between gap-3 border-b border-slate-100 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-navy-900">University of Economics – The University of Da Nang</h3>
+              <p class="text-sm font-medium text-slate-600 mt-0.5">Bachelor of Business Administration | Major: Financial Management</p>
+            </div>
+            <span class="rounded-full bg-navy-900 px-3.5 py-1 text-xs font-semibold text-gold-400">2023 – 2027</span>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-4">
+            <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
+              <div class="text-xs text-slate-500">Cumulative GPA</div>
+              <div class="text-xl font-bold text-navy-900 tabular-nums mt-0.5">3.58 / 4.0</div>
+            </div>
+            <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
+              <div class="text-xs text-slate-500">Target Graduation</div>
+              <div class="text-xl font-bold text-navy-900 mt-0.5">Jul 2027</div>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Core Finance Coursework</div>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Financial Analysis</span>
+                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Financial statement decomposition, ratio benchmarking, and earnings quality.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Advanced Financial Mgmt</span>
+                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Capital budgeting, corporate valuation (DCF, NPV), and optimal capital structure.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Working Capital Mgmt</span>
+                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Cash flow optimization, short-term asset management, and 5Cs credit evaluation.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Financial Risk Mgmt</span>
+                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Identifying, measuring, and hedging market, credit, and operational financial risks.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Financial Derivatives</span>
+                  <span class="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">Grade A</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Arbitrage &amp; put-call parity; hedging and pricing forwards, futures, and options.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Principles of Accounting</span>
+                  <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">Grade B+</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Double-entry bookkeeping, financial statement preparation, and accounting fundamentals.</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200/80 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">Project Mgmt &amp; Negotiation</span>
+                  <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">Grade B+</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Timeline governance, stakeholder alignment, and commercial deal structuring.</p>
+              </div>
+
+              <div class="rounded-xl border border-amber-200/90 bg-amber-50/40 p-3.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-sm text-navy-900">FinTech</span>
+                  <span class="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">In Progress</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-600">Core mechanics of blockchain technology, smart contracts, and decentralized finance (DeFi).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-5">
+          <div class="rounded-2xl border border-gold-500/30 bg-navy-900 p-6 text-white shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-gold-400">Merit Scholarship</span>
+              <span class="text-xs text-slate-300">2019 – 2027 (7 Years)</span>
+            </div>
+            <h3 class="mt-2 text-lg font-bold">
+              SEEDS Scholar — <a href="https://pacificlinks.org/" target="_blank" rel="noopener noreferrer" class="underline decoration-gold-400/60 hover:text-gold-400 transition">Pacific Links Foundation</a>
+            </h3>
+            <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+              Awarded 7-year merit-based scholarship under the PACT criteria (Passion, Ambition, Curiosity, Tenacity) recognizing sustained academic excellence and community leadership.
+            </p>
+            <p class="mt-2.5 text-sm text-gold-400/95 leading-relaxed">
+              Deeply grateful to Pacific Links Foundation for opening my access to education and providing structured training that shaped my growth.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm flex items-center justify-between">
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">High School Foundation</div>
+              <div class="text-sm font-bold text-navy-900 mt-0.5">Quốc Học Huế Gifted High School</div>
+              <div class="text-xs text-slate-600">Informatics Track — Algorithmic Logic &amp; C++</div>
+            </div>
+            <span class="rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">C++</span>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm space-y-3.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Academic Collaboration</span>
+              <span class="text-xs font-medium text-slate-500">2023 – 2026</span>
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-navy-900">Cross-Team Adaptability &amp; Teamwork</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                Voluntarily teamed up with peers outside my major to embrace diverse perspectives and prepare for cross-functional workplaces—leading with two core questions: <em>&ldquo;How can we do this better?&rdquo;</em> and <em>&ldquo;How can each teammate leverage their strengths while growing in areas for improvement?&rdquo;</em>
+              </p>
+            </div>
+            <div class="space-y-1.5 border-t border-slate-100 pt-3 text-xs">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Developing Mgmt Skills</strong> &bull; HRM</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.3)</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Business Communication</strong> &bull; MIS</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.1)</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Adv. Financial Mgmt</strong> &bull; Int'l (Laos)</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (9.0)</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Taxation</strong> &bull; Public Finance</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Supply Chain Mgmt</strong> &bull; SCM</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-slate-700"><strong class="text-navy-900">Financial Analysis</strong> &bull; Corp. Finance</span>
+                <span class="shrink-0 rounded bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800 tabular-nums">A (8.7)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Professional Experience -->
+    <section id="experience" class="scroll-mt-24">
+      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">04 / Career Track Record</div>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Work Experience</h2>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2 items-stretch">
+        <!-- Role 1 -->
+        <article class="card-hover flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">Finance Content</span>
+              <span class="text-xs font-medium text-slate-500">Mar 2024 – Aug 2025</span>
+            </div>
+            <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Educational Content Creator Intern</h3>
+            <p class="text-xs font-medium text-slate-500 mt-0.5">Pacific Links Foundation (PAXU App) &bull; HCMC</p>
+
+            <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">1. Objective</div>
+                <p class="mt-1 text-slate-600 leading-relaxed">Build accessible, legally compliant personal finance education for workers and students.</p>
+              </div>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">2. Actions &amp; Results</div>
+                <p class="mt-1 text-slate-600 leading-relaxed">Authored <strong>100+ finance articles</strong> &amp; 20+ migration pieces (<strong>85% first-draft approval</strong>); delivered workshop for <strong>200+ students</strong>.</p>
+              </div>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">3. Skills Learned</div>
+                <div class="mt-1.5 flex flex-wrap gap-1.5">
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Regulatory Compliance Check</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Financial Communication</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Workshop Presentation</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Progress reporting</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Receptiveness to feedback</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 border-t border-slate-100 pt-3.5 text-xs text-slate-500">
+            <span class="font-bold uppercase tracking-wider text-navy-900">Reason for Completion:</span> Achieved my initial goals in core fundamentals, idea articulation, and office operations; now seeking to advance my analytical skills and domain expertise.
+          </div>
+        </article>
+
+        <!-- Role 2 -->
+        <article class="card-hover flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">Pricing &amp; Revenue</span>
+              <span class="text-xs font-medium text-slate-500">Jul 2023 – Jan 2024</span>
+            </div>
+            <h3 class="mt-3 text-lg font-bold text-navy-900 leading-snug">Freelance OTA Sales &amp; Pricing Manager</h3>
+            <p class="text-xs font-medium text-slate-500 mt-0.5">Airbnb Operations &bull; Da Nang</p>
+
+            <div class="mt-5 space-y-3.5 border-t border-slate-100 pt-4 text-sm">
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">1. Objective</div>
+                <p class="mt-1 text-slate-600 leading-relaxed">Maximize unit occupancy and net revenue through dynamic seasonal pricing.</p>
+              </div>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">2. Actions &amp; Results</div>
+                <p class="mt-1 text-slate-600 leading-relaxed">Managed seasonal rate adjustments, occupancy tracking, listing optimization, and international guest support.</p>
+              </div>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-gold-600">3. Skills Learned</div>
+                <div class="mt-1.5 flex flex-wrap gap-1.5">
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Customer Communication &amp; Service</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Content &amp; Visual Optimization</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Extranet System Proficiency</span>
+                  <span class="rounded-md bg-navy-900/5 border border-navy-900/15 px-2.5 py-1 text-xs font-semibold text-navy-900">Basic Rate &amp; Revenue Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 border-t border-slate-100 pt-3.5 text-xs text-slate-500">
+            <span class="font-bold uppercase tracking-wider text-navy-900">Reason for Completion:</span> Transitioned to focus on specialized finance coursework and PAXU internship.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Financial Projects -->
+  <section id="projects" class="scroll-mt-24 pt-12">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gold-600">05 / Applied Execution</div>
+          <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Financial Projects &amp; Achievements</h2>
+        </div>
+        <p class="text-xs text-slate-500">Click any project card to inspect full methodology &amp; outcomes</p>
+      </div>
+
+      <div id="projects-grid" class="mt-8 grid gap-6 md:grid-cols-2 items-stretch">
+        <!-- Project 1 -->
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">+11.34% Annual ROI</span>
+              <span class="text-xs font-medium text-slate-500">Apr 2025 – Apr 2026</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-navy-900">Personal Investment Portfolio Management</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Managed a <strong>$4,000 multi-asset portfolio</strong> for an individual investor across 4 asset classes: <strong>60% Mutual Funds</strong>, <strong>20% Equities</strong>, <strong>15% Gold</strong>, and <strong>5% Cash</strong>.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Asset Allocation</span>
+              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Market Research</span>
+              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Trend Analysis &amp; Pattern Recognition</span>
+              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Emotional Regulation</span>
+              <span class="rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">Self-Directed Learning</span>
+
+
+            </div>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
+            <div class="text-xs text-slate-500">Ending Value: <strong class="text-navy-900 tabular-nums">$4,453.60</strong></div>
+            <button data-project="portfolio" class="project-modal-btn text-xs font-semibold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1 transition">
+              <span>View Case Brief</span>
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">1st Place Winner (English Track)</span>
+              <span class="text-xs font-medium text-slate-500">May 2024 – May 2025</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-navy-900">Success Entrepreneurship Track 2024 — Agri-Tourism</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Led a 3-member cross-functional team (Logistics &amp; Marketing) to <strong>1st Place</strong> against scholars from <strong>UEH</strong> and <strong>Fulbright University</strong>. Conducted field research across <strong>8 traditional craft villages</strong> (Hue, Da Nang, Quang Nam) to build the business model, market entry strategy, and <strong>financial forecasts</strong>.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Pitch Deck</span>
+              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Financial Forecasting</span>
+              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Field Research</span>
+              <span class="rounded-md bg-amber-50 border border-amber-200/80 px-2.5 py-1 text-xs font-semibold text-amber-900">Team Leadership</span>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
+            <div class="text-xs text-slate-500">Role: <strong class="text-navy-900">Team Leader &amp; Financial Modeler</strong></div>
+            <button data-project="set2024" class="project-modal-btn text-xs font-semibold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1 transition">
+              <span>View Case Brief</span>
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Finance Skills -->
+   <section id="skills" class="scroll-mt-24 pt-12">
+      <div class="text-xs font-bold uppercase tracking-widest text-gold-600">06 / Core Capabilities</div>
+      <h2 class="mt-2 font-serif text-3xl font-bold text-navy-900">Finance Skills &amp; Technical Stack</h2>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">FIN</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Corporate Finance &amp; Valuation</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">DCF Valuation</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">NPV &amp; Capital Budgeting</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Financial Statement Analysis</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Working Capital Optimization</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">5Cs Credit Evaluation</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Derivatives &amp; Risk Hedging</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Portfolio Allocation</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">BI</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Data Analytics &amp; Engineering</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Excel (Reconciliation &amp; Modeling)</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Power BI</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">DAX &amp; Time Intelligence</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">SQL</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Python</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">C++</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">AI in Financial Services</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-gold-400 font-bold text-sm">EXEC</div>
+          <h3 class="mt-4 text-lg font-bold text-navy-900">Leadership &amp; Global Fluency</h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800">English (Fluent / C2)</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Chinese (Beginner)</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Vietnamese (Native)</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Regulatory Compliance</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Stakeholder Pitching</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-800">Negotiation</span>
           </div>
         </div>
       </div>
