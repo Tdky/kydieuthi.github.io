@@ -19,15 +19,15 @@
           },
           colors: {
             navy: {
-              950: '#070D1D',
-              900: '#0B132B',
-              800: '#132043',
-              700: '#1C2E5C',
+              950: 'rgb(var(--brand-950) / <alpha-value>)',
+              900: 'rgb(var(--brand-900) / <alpha-value>)',
+              800: 'rgb(var(--brand-800) / <alpha-value>)',
+              700: 'rgb(var(--brand-700) / <alpha-value>)',
             },
             gold: {
-              400: '#DFC17B',
-              500: '#C5A059',
-              600: '#A8843F',
+              400: 'rgb(var(--accent-400) / <alpha-value>)',
+              500: 'rgb(var(--accent-500) / <alpha-value>)',
+              600: 'rgb(var(--accent-600) / <alpha-value>)',
             }
           }
         }
@@ -35,8 +35,26 @@
     };
   </script>
   <style>
+    :root {
+      --brand-950: 10 10 12;
+      --brand-900: 17 18 22;
+      --brand-800: 26 28 34;
+      --brand-700: 38 41 50;
+      --accent-400: 226 232 240;
+      --accent-500: 255 255 255;
+      --accent-600: 0 136 204;
+      --data-blue: #00ADEF;
+      --hero-glow: rgba(0, 173, 239, 0.14);
+      --hover-border: rgba(0, 173, 239, 0.45);
+      --hover-shadow: rgba(10, 10, 12, 0.14);
+    }
     html {
       font-size: 17px;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--data-blue) !important;
+      box-shadow: 0 0 0 2px rgba(0, 173, 239, 0.2);
     }
     main p strong, main li strong {
       font-weight: 600;
@@ -54,16 +72,16 @@
       -webkit-backdrop-filter: blur(12px);
     }
     .hero-gradient {
-      background: radial-gradient(circle at 85% 20%, rgba(197, 160, 89, 0.14) 0%, rgba(11, 19, 43, 0) 45%),
-                  linear-gradient(135deg, #070D1D 0%, #0B132B 55%, #132043 100%);
+      background: radial-gradient(circle at 85% 20%, var(--hero-glow) 0%, rgba(10, 10, 12, 0) 48%),
+                  linear-gradient(135deg, rgb(var(--brand-950)) 0%, rgb(var(--brand-900)) 55%, rgb(var(--brand-800)) 100%);
     }
     .card-hover {
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .card-hover:hover {
       transform: translateY(-3px);
-      box-shadow: 0 14px 32px -10px rgba(11, 19, 43, 0.12);
-      border-color: rgba(197, 160, 89, 0.45);
+      box-shadow: 0 14px 32px -10px var(--hover-shadow);
+      border-color: var(--hover-border);
     }
     @media print {
       .no-print { display: none !important; }
@@ -91,6 +109,7 @@
   </style>
   <script id="portfolio-state" type="application/json">
   {
+    "theme": "mercedes",
     "profile": {},
     "extraProjects": [],
     "extraCerts": [],
@@ -1445,6 +1464,15 @@
       <div class="p-6 overflow-y-auto space-y-4 flex-1">
         <!-- Tab 1: Profile -->
         <div id="etab-profile" class="ed-panel space-y-3">
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+            <label for="ed-theme" class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-1.5">Company Color Theme Preset</label>
+            <select id="ed-theme" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-800">
+              <option value="mercedes">Mercedes-Benz (Obsidian Black, Metallic Silver &amp; #00ADEF Blue)</option>
+              <option value="corporate">Classic Corporate Finance (Deep Navy &amp; Champagne Gold)</option>
+              <option value="banking">Investment &amp; Banking (Deep Slate &amp; Emerald)</option>
+            </select>
+            <p class="mt-1.5 text-[11px] text-slate-500">Switch presets anytime to tailor the palette for different target companies, then click Save &amp; Download.</p>
+          </div>
           <div class="grid gap-3 sm:grid-cols-2">
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
@@ -1658,7 +1686,7 @@
           labels: ['Mutual Funds (60%)', 'Equities (20%)', 'Gold (15%)', 'Cash (5%)'],
           datasets: [{
             data: [60, 20, 15, 5],
-            backgroundColor: ['#0B132B', '#1C2E5C', '#C5A059', '#94A3B8'],
+            backgroundColor: ['#111216', '#262932', '#00ADEF', '#94A3B8'],
             borderWidth: 2,
             borderColor: '#FFFFFF'
           }]
@@ -1757,7 +1785,7 @@
           datasets: [{
             label: 'Days',
             data: [45, 35, 40, 40],
-            backgroundColor: ['#1C2E5C', '#0B132B', '#C5A059', '#059669'],
+            backgroundColor: ['#262932', '#111216', '#00ADEF', '#34D399'],
             borderRadius: 6
           }]
         },
@@ -1814,8 +1842,8 @@
         data: {
           labels: ['2022', '2023', '2024'],
           datasets: [
-            { label: 'Net Revenue', data: [5126.5, 4608.0, 5126.9], backgroundColor: '#0B132B', borderRadius: 4 },
-            { label: 'Net Profit', data: [455.8, 552.1, 712.5], backgroundColor: '#C5A059', borderRadius: 4 },
+            { label: 'Net Revenue', data: [5126.5, 4608.0, 5126.9], backgroundColor: '#111216', borderRadius: 4 },
+            { label: 'Net Profit', data: [455.8, 552.1, 712.5], backgroundColor: '#00ADEF', borderRadius: 4 },
             { label: 'Operating Cash Flow', data: [-421.5, 895.0, 1882.7], backgroundColor: '#059669', borderRadius: 4 }
           ]
         },
@@ -1834,12 +1862,12 @@
           datasets: [{
             label: 'WACC (%)',
             data: [7.37, 7.24, 7.12, 7.01, 7.00, 6.97, 7.00, 7.20, 7.38, 7.65],
-            borderColor: '#0B132B',
+            borderColor: '#00ADEF',
             backgroundColor: 'rgba(197, 160, 89, 0.2)',
             fill: true,
             tension: 0.35,
             pointRadius: [4, 4, 4, 4, 4, 7, 4, 4, 4, 4],
-            pointBackgroundColor: ['#0B132B', '#0B132B', '#0B132B', '#0B132B', '#0B132B', '#059669', '#0B132B', '#0B132B', '#0B132B', '#0B132B']
+            pointBackgroundColor: ['#111216', '#111216', '#111216', '#111216', '#111216', '#34D399', '#111216', '#111216', '#111216', '#111216']
           }]
         },
         options: {
@@ -1868,7 +1896,7 @@
           labels: ['Y1', 'Y2', 'Y3', 'Y4', 'Y5'],
           datasets: [
             { label: 'Revenue ($M)', data: [], backgroundColor: '#CBD5E1', borderRadius: 4 },
-            { label: 'EBITDA ($M)', data: [], backgroundColor: '#0B132B', borderRadius: 4 },
+            { label: 'EBITDA ($M)', data: [], backgroundColor: '#111216', borderRadius: 4 },
             { label: 'Unlevered FCF ($M)', data: [], backgroundColor: '#059669', borderRadius: 4 }
           ]
         },
@@ -2042,12 +2070,12 @@
           [0, ebitA]
         ];
         bvaChart.data.datasets[0].backgroundColor = [
-          '#0B132B',
+          '#111216',
           volVar >= 0 ? '#059669' : '#E11D48',
           priceVar >= 0 ? '#059669' : '#E11D48',
           cogsVar >= 0 ? '#059669' : '#E11D48',
           opexVar >= 0 ? '#059669' : '#E11D48',
-          '#C5A059'
+          '#00ADEF'
         ];
         bvaChart.update();
       }
@@ -2202,7 +2230,53 @@
         grid.appendChild(card);
       }
 
+      const THEME_PRESETS = {
+        mercedes: {
+          '--brand-950': '10 10 12',
+          '--brand-900': '17 18 22',
+          '--brand-800': '26 28 34',
+          '--brand-700': '38 41 50',
+          '--accent-400': '226 232 240',
+          '--accent-500': '255 255 255',
+          '--accent-600': '0 136 204',
+          '--data-blue': '#00ADEF',
+          '--hero-glow': 'rgba(0, 173, 239, 0.14)',
+          '--hover-border': 'rgba(0, 173, 239, 0.45)',
+          '--hover-shadow': 'rgba(10, 10, 12, 0.14)'
+        },
+        corporate: {
+          '--brand-950': '7 13 29',
+          '--brand-900': '11 19 43',
+          '--brand-800': '19 32 67',
+          '--brand-700': '28 46 92',
+          '--accent-400': '223 193 123',
+          '--accent-500': '197 160 89',
+          '--accent-600': '168 132 63',
+          '--data-blue': '#C5A059',
+          '--hero-glow': 'rgba(197, 160, 89, 0.14)',
+          '--hover-border': 'rgba(197, 160, 89, 0.45)',
+          '--hover-shadow': 'rgba(11, 19, 43, 0.12)'
+        },
+        banking: {
+          '--brand-950': '9 14 23',
+          '--brand-900': '15 23 42',
+          '--brand-800': '30 41 59',
+          '--brand-700': '51 65 85',
+          '--accent-400': '110 231 183',
+          '--accent-500': '52 211 153',
+          '--accent-600': '5 150 105',
+          '--data-blue': '#10B981',
+          '--hero-glow': 'rgba(16, 185, 129, 0.14)',
+          '--hover-border': 'rgba(16, 185, 129, 0.45)',
+          '--hover-shadow': 'rgba(15, 23, 42, 0.14)'
+        }
+      };
+      function applyTheme(key) {
+        const preset = THEME_PRESETS[key] || THEME_PRESETS.mercedes;
+        Object.entries(preset).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
+      }
       function applyStateToDOM() {
+        applyTheme(portfolioState.theme || 'mercedes');
         const p = portfolioState.profile || {};
         if (p.name) document.getElementById('hero-name').textContent = p.name;
         if (p.gpa) document.getElementById('hero-gpa').textContent = p.gpa;
@@ -2230,7 +2304,14 @@
 
       // Editor Modal
       const editorModal = document.getElementById('editor-modal');
+      document.getElementById('ed-theme').addEventListener('change', (e) => {
+        portfolioState.theme = e.target.value;
+        applyTheme(portfolioState.theme);
+        syncStateTag();
+        showToast('Theme updated! Click Save & Download index.html to publish.');
+      });
       document.getElementById('open-editor-btn').addEventListener('click', () => {
+        document.getElementById('ed-theme').value = portfolioState.theme || 'mercedes';
         document.getElementById('ed-name').value = document.getElementById('hero-name').textContent.trim();
         document.getElementById('ed-gpa').value = document.getElementById('hero-gpa').textContent.trim();
         document.getElementById('ed-email').value = document.getElementById('hero-email-text').textContent.trim();
