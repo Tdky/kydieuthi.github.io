@@ -550,13 +550,26 @@
             </p>
             <div class="space-y-3 rounded-xl bg-slate-50 p-4 border border-slate-200/80">
               <div>
-                <label for="wc-industry" class="block text-xs font-medium text-slate-700 mb-1">Industry Benchmark (Optional)</label>
+                <label for="wc-industry" class="block text-xs font-medium text-slate-700 mb-1">Industry Benchmark (2025)</label>
                 <select id="wc-industry" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-navy-900">
-                  <option value="general">General / Cross-Industry (≤ 45 days)</option>
-                  <option value="retail">Retail &amp; FMCG / E-Commerce (≤ 0 days)</option>
-                  <option value="automotive">Automotive &amp; Manufacturing (≤ 50 days)</option>
-                  <option value="pharma">Pharmaceuticals &amp; Healthcare (≤ 75 days)</option>
-                  <option value="saas">Tech / SaaS &amp; Services (≤ 20 days)</option>
+                  <option value="ecommerce">E-commerce / Online Retail (-12 days • Cash-generative)</option>
+                  <option value="restaurants">Restaurants / Food Service (-5 days • Cash-generative)</option>
+                  <option value="saas">Technology (Software / SaaS) (-3 days • Cash-generative)</option>
+                  <option value="grocery">Grocery / Supermarkets (8 days • Lean)</option>
+                  <option value="retail">Retail (General) (28 days • Lean)</option>
+                  <option value="fnb">Food &amp; Beverage (38 days • Typical)</option>
+                  <option value="energy">Energy (Oil &amp; Gas) (45 days • Typical)</option>
+                  <option value="healthcare">Healthcare Services (55 days • Typical)</option>
+                  <option value="electronics" selected>Consumer Electronics (58 days • Typical)</option>
+                  <option value="automotive">Automotive (62 days • Typical)</option>
+                  <option value="hardware">Technology (Hardware) (72 days • Capital-intensive)</option>
+                  <option value="construction">Construction (78 days • Capital-intensive)</option>
+                  <option value="industrial">Industrial Manufacturing (88 days • Capital-intensive)</option>
+                  <option value="chemicals">Chemicals (98 days • Capital-intensive)</option>
+                  <option value="apparel">Apparel / Fashion (110 days • Capital-intensive)</option>
+                  <option value="aerospace">Aerospace &amp; Defense (120 days • Capital-intensive)</option>
+                  <option value="biotech">Biotechnology (150 days • Capital-intensive)</option>
+                  <option value="pharma">Pharmaceuticals (175 days • Capital-intensive)</option>
                 </select>
               </div>
               <div>
@@ -564,21 +577,21 @@
                   <span>Days Inventory Outstanding (DIO)</span>
                   <strong id="wc-dio-val" class="tabular-nums text-navy-900">45 days</strong>
                 </label>
-                <input id="wc-dio" type="range" min="10" max="120" step="1" value="45" class="w-full accent-navy-900" />
+                <input id="wc-dio" type="range" min="0" max="220" step="1" value="45" class="w-full accent-navy-900" />
               </div>
               <div>
                 <label for="wc-dso" class="flex justify-between text-xs font-medium text-slate-700 mb-1">
                   <span>Days Sales Outstanding (DSO)</span>
                   <strong id="wc-dso-val" class="tabular-nums text-navy-900">35 days</strong>
                 </label>
-                <input id="wc-dso" type="range" min="10" max="120" step="1" value="35" class="w-full accent-navy-900" />
+                <input id="wc-dso" type="range" min="0" max="220" step="1" value="35" class="w-full accent-navy-900" />
               </div>
               <div>
                 <label for="wc-dpo" class="flex justify-between text-xs font-medium text-slate-700 mb-1">
                   <span>Days Payables Outstanding (DPO)</span>
                   <strong id="wc-dpo-val" class="tabular-nums text-navy-900">40 days</strong>
                 </label>
-                <input id="wc-dpo" type="range" min="10" max="120" step="1" value="40" class="w-full accent-navy-900" />
+                <input id="wc-dpo" type="range" min="0" max="220" step="1" value="40" class="w-full accent-navy-900" />
               </div>
             </div>
           </div>
@@ -593,7 +606,7 @@
               <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
                 <div class="text-xs uppercase tracking-wider text-slate-500">Liquidity Assessment</div>
                 <div id="wc-status" class="mt-1 text-lg font-bold text-emerald-700">Healthy Working Capital</div>
-                <div class="mt-1 text-xs text-slate-600">Balanced receivables &amp; supplier credit</div>
+                <div id="wc-note" class="mt-1 text-xs text-slate-600">Balanced receivables &amp; supplier credit</div>
               </div>
             </div>
             <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
@@ -1919,17 +1932,30 @@
           responsive: true,
           maintainAspectRatio: false,
           plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
+          scales: { y: { suggestedMin: -20 } }
         }
       });
 
       const wcIndustry = document.getElementById('wc-industry');
       const wcBenchmarks = {
-        general:    { label: 'Cross-Industry', good: 45, warn: 70 },
-        retail:     { label: 'Retail & FMCG', good: 0, warn: 25 },
-        automotive: { label: 'Automotive & Manufacturing', good: 50, warn: 80 },
-        pharma:     { label: 'Pharmaceuticals', good: 75, warn: 110 },
-        saas:       { label: 'Tech / SaaS', good: 20, warn: 45 }
+        ecommerce:   { label: 'E-commerce / Online Retail', bench: -12, tier: 'Cash-generative', note: 'Collects at checkout, turns inventory fast, pays suppliers later.' },
+        restaurants: { label: 'Restaurants / Food Service', bench: -5,  tier: 'Cash-generative', note: 'Instant POS payment, minimal receivables, rapid perishable turnover.' },
+        saas:        { label: 'Technology (Software / SaaS)', bench: -3, tier: 'Cash-generative', note: 'Minimal physical inventory and annual prepaid billing.' },
+        grocery:     { label: 'Grocery / Supermarkets', bench: 8,   tier: 'Lean', note: 'High-velocity perishables and instant cash/card sales.' },
+        retail:      { label: 'Retail (General)', bench: 28,  tier: 'Lean', note: 'Fast-turning inventory partly funded by supplier payables.' },
+        fnb:         { label: 'Food & Beverage', bench: 38,  tier: 'Typical', note: 'Moderate inventory & distribution receivables vs. supplier credit.' },
+        energy:      { label: 'Energy (Oil & Gas)', bench: 45,  tier: 'Typical', note: 'Commodity inventories and trade receivables vs. vendor payables.' },
+        healthcare:  { label: 'Healthcare Services', bench: 55,  tier: 'Typical', note: 'Slower insurer/payer reimbursement lifts DSO.' },
+        electronics: { label: 'Consumer Electronics', bench: 58,  tier: 'Typical', note: 'Component & channel inventory partly funded by CM terms.' },
+        automotive:  { label: 'Automotive', bench: 62,  tier: 'Typical', note: 'Finished-vehicle & dealer receivables cushioned by long DPO.' },
+        hardware:    { label: 'Technology (Hardware)', bench: 72,  tier: 'Capital-intensive', note: 'Long component lead times and enterprise receivables.' },
+        construction:{ label: 'Construction', bench: 78,  tier: 'Capital-intensive', note: 'WIP and retainage inflate inventory & receivables.' },
+        industrial:  { label: 'Industrial Manufacturing', bench: 88,  tier: 'Capital-intensive', note: 'Raw-material/WIP stock and B2B receivables dominate cycle.' },
+        chemicals:   { label: 'Chemicals', bench: 98,  tier: 'Capital-intensive', note: 'Bulk feedstock and global distribution tie up cash.' },
+        apparel:     { label: 'Apparel / Fashion', bench: 110, tier: 'Capital-intensive', note: 'Seasonal inventory lands months before sell-through.' },
+        aerospace:   { label: 'Aerospace & Defense', bench: 120, tier: 'Capital-intensive', note: 'Multi-year build cycles, large WIP, milestone billing.' },
+        biotech:     { label: 'Biotechnology', bench: 150, tier: 'Capital-intensive', note: 'Specialized inventory and slow institutional payments.' },
+        pharma:      { label: 'Pharmaceuticals', bench: 175, tier: 'Capital-intensive', note: 'Long production/QA hold and extended distributor terms.' }
       };
 
       function updateWC() {
@@ -1937,7 +1963,7 @@
         const dso = Number(wcDso.value);
         const dpo = Number(wcDpo.value);
         const ccc = dio + dso - dpo;
-        const ind = wcBenchmarks[wcIndustry ? wcIndustry.value : 'general'];
+        const ind = wcBenchmarks[wcIndustry ? wcIndustry.value : 'electronics'];
 
         document.getElementById('wc-dio-val').textContent = dio + ' days';
         document.getElementById('wc-dso-val').textContent = dso + ' days';
@@ -1945,16 +1971,18 @@
         document.getElementById('wc-ccc-val').textContent = ccc + ' Days';
 
         const statusEl = document.getElementById('wc-status');
-        if (ccc <= ind.good) {
-          statusEl.textContent = `Strong for ${ind.label} (≤ ${ind.good}d)`;
+        const noteEl = document.getElementById('wc-note');
+        if (ccc <= ind.bench) {
+          statusEl.textContent = `Outperforming ${ind.label} (Benchmark: ${ind.bench}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-emerald-700';
-        } else if (ccc <= ind.warn) {
-          statusEl.textContent = `Acceptable for ${ind.label} (≤ ${ind.warn}d)`;
+        } else if (ccc <= ind.bench + 20) {
+          statusEl.textContent = `Near Benchmark for ${ind.label} (${ind.bench}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-navy-900';
         } else {
-          statusEl.textContent = `High Tie-Up for ${ind.label} (> ${ind.warn}d)`;
+          statusEl.textContent = `High Cash Tie-Up vs. ${ind.label} (${ind.bench}d)`;
           statusEl.className = 'mt-1 text-lg font-bold text-amber-700';
         }
+        if (noteEl) noteEl.textContent = `${ind.tier}: ${ind.note}`;
         wcChart.data.datasets[0].data = [dio, dso, dpo, ccc];
         wcChart.update();
       }
