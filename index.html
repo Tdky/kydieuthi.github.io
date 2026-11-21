@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
@@ -356,7 +357,7 @@
           <button data-tab="tab-ops" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Ops Driver &rarr; FCF</button>
           <button data-tab="tab-bva" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BvA Variance Bridge</button>
           <button data-tab="tab-ntp" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">NTP (HNX) Case Study</button>
-          <button data-tab="tab-fsa" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BCTC Ratio Analyzer</button>
+          <button data-tab="tab-fsa" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Financial Analysis</button>
         </div>
       </div>
 
@@ -479,7 +480,7 @@
                   <button type="button" id="dcf-unit-b" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-navy-900 transition">Scale: $B</button>
                 </div>
                 <div class="flex items-center gap-1.5">
-                  <button type="button" id="dcf-preset-apple" class="px-2.5 py-1 rounded-md border border-slate-300 bg-white text-[11px] font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Apple Case</button>
+                  <button type="button" id="dcf-preset-apple" class="px-2.5 py-1 rounded-md border border-slate-300 bg-white text-[11px] font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Apple Case (2026→2031)</button>
                   <button type="button" id="dcf-preset-default" class="px-2.5 py-1 rounded-md border border-slate-300 bg-white text-[11px] font-semibold text-slate-600 hover:border-navy-900 hover:text-navy-900 transition">Reset</button>
                 </div>
               </div>
@@ -852,12 +853,12 @@
         <div class="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Automated Financial Statement Check</span>
-            <h3 class="mt-1 text-xl font-bold text-navy-900">BCTC Upload &amp; Core Ratio Analyzer</h3>
-            <p class="mt-1 text-sm text-slate-600">Upload a Balance Sheet &amp; Income Statement (<strong>.xlsx, .xls, or .csv</strong>) in Vietnamese (VAS) or English to auto-compute key liquidity, solvency, efficiency, and profitability ratios.</p>
+            <h3 class="mt-1 text-xl font-bold text-navy-900">Financial Analysis &amp; Core Ratio Analyzer</h3>
+            <p class="mt-1 text-sm text-slate-600">Upload a Balance Sheet &amp; Income Statement (<strong>.xlsx, .xls, .csv, or text-based .pdf</strong>) in Vietnamese (VAS) or English to auto-compute key liquidity, solvency, efficiency, and profitability ratios.</p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <label for="fsa-file" class="cursor-pointer rounded-xl bg-navy-900 px-4 py-2 text-xs font-semibold text-white shadow hover:bg-navy-800 transition">Upload BCTC (.xlsx / .csv)</label>
-            <input id="fsa-file" type="file" accept=".csv,.xlsx,.xls" class="hidden" />
+            <label for="fsa-file" class="cursor-pointer rounded-xl bg-navy-900 px-4 py-2 text-xs font-semibold text-white shadow hover:bg-navy-800 transition">Upload Statement (.xlsx / .csv / .pdf)</label>
+            <input id="fsa-file" type="file" accept=".csv,.xlsx,.xls,.pdf" class="hidden" />
             <button type="button" id="fsa-demo-btn" class="rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Load Sample</button>
             <button type="button" id="fsa-tpl-btn" class="rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Download Template</button>
           </div>
@@ -1830,8 +1831,9 @@
 
       document.getElementById('dcf-preset-apple').addEventListener('click', () => {
         if (dcfUnit !== 'B') setDcfUnit('B');
-        dcfFcf.value = '96.1';
-        dcfGrowth.value = '6.5';
+        // Base FY2026 FCF = $136.056B (10-K); 5Y proj FY2027-2031 at 5.0% CAGR => FY2027E = $142.9B
+        dcfFcf.value = '142.9';
+        dcfGrowth.value = '5';
         dcfWacc.value = '9.5';
         dcfTgr.value = '3';
         updateDCF();
@@ -2739,9 +2741,43 @@
         if (!file) return;
         try {
           let rows = [];
-          if (file.name.toLowerCase().endsWith('.csv')) {
+          const fname = file.name.toLowerCase();
+          if (fname.endsWith('.csv')) {
             const text = await file.text();
             rows = text.split(/\r?\n/).map(line => line.split(',').map(c => c.replace(/^"|"$/g, '').trim()));
+          } else if (fname.endsWith('.pdf')) {
+            if (!window.pdfjsLib) {
+              showToast('PDF parser still loading—please try again or use Excel/CSV.');
+              return;
+            }
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+            const buf = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+            const maxPages = Math.min(pdf.numPages, 80);
+            for (let p = 1; p <= maxPages; p++) {
+              const page = await pdf.getPage(p);
+              const tc = await page.getTextContent();
+              const linesMap = [];
+              tc.items.forEach(it => {
+                const str = (it.str || '').trim();
+                if (!str) return;
+                const y = Math.round(it.transform[5] / 3) * 3;
+                const x = it.transform[4];
+                let line = linesMap.find(l => Math.abs(l.y - y) <= 3);
+                if (!line) { line = { y, items: [] }; linesMap.push(line); }
+                line.items.push({ x, str });
+              });
+              linesMap.sort((a, b) => b.y - a.y);
+              linesMap.forEach(l => {
+                l.items.sort((a, b) => a.x - b.x);
+                const full = l.items.map(i => i.str).join(' ').replace(/\s+/g, ' ').trim();
+                const m = full.match(/^([A-Za-zÀ-ỹ\s,&().\/-]+?)\s+([$€₫\d,().-]+(?:\s+[$€₫\d,().-]+)*)$/);
+                if (m) {
+                  const nums = m[2].split(/\s+/).map(t => t.replace(/[$€₫]/g, '').replace(/^\((.+)\)$/, '-$1'));
+                  rows.push([m[1].trim(), ...nums]);
+                }
+              });
+            }
           } else if (window.XLSX) {
             const buf = await file.arrayBuffer();
             const wb = XLSX.read(buf, { type: 'array' });
@@ -2757,7 +2793,9 @@
           renderFsaInputs();
           renderFsaRatios();
           fsaStatus.classList.remove('hidden');
-          fsaStatus.textContent = `Parsed "${file.name}" locally: matched ${matched} of ${fsaFields.length} financial statement line items.`;
+          fsaStatus.textContent = matched > 0
+            ? `Parsed "${file.name}" locally: matched ${matched} of ${fsaFields.length} financial statement line items.`
+            : `No matching line items found in "${file.name}". If this is a scanned PDF, please use Excel/CSV or edit the fields directly.`;
         } catch (err) {
           fsaStatus.classList.remove('hidden');
           fsaStatus.textContent = 'Could not parse file. Please check that Column A has line-item names and Column B has numeric values.';
@@ -2780,7 +2818,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'BCTC_Template.csv';
+        a.download = 'Financial_Analysis_Template.csv';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
