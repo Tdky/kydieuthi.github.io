@@ -6,6 +6,7 @@
   <title>Kỳ Diệu Thi | Corporate Finance, Valuation &amp; Data Analytics Portfolio</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
@@ -355,6 +356,7 @@
           <button data-tab="tab-ops" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Ops Driver &rarr; FCF</button>
           <button data-tab="tab-bva" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BvA Variance Bridge</button>
           <button data-tab="tab-ntp" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">NTP (HNX) Case Study</button>
+          <button data-tab="tab-fsa" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BCTC Ratio Analyzer</button>
         </div>
       </div>
 
@@ -840,6 +842,48 @@
               <div class="relative h-72">
                 <canvas id="bvaChart"></canvas>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 7: Financial Statement Ratio Analyzer -->
+      <div id="tab-fsa" class="analysis-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Automated Financial Statement Check</span>
+            <h3 class="mt-1 text-xl font-bold text-navy-900">BCTC Upload &amp; Core Ratio Analyzer</h3>
+            <p class="mt-1 text-sm text-slate-600">Upload a Balance Sheet &amp; Income Statement (<strong>.xlsx, .xls, or .csv</strong>) in Vietnamese (VAS) or English to auto-compute key liquidity, solvency, efficiency, and profitability ratios.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <label for="fsa-file" class="cursor-pointer rounded-xl bg-navy-900 px-4 py-2 text-xs font-semibold text-white shadow hover:bg-navy-800 transition">Upload BCTC (.xlsx / .csv)</label>
+            <input id="fsa-file" type="file" accept=".csv,.xlsx,.xls" class="hidden" />
+            <button type="button" id="fsa-demo-btn" class="rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Load Sample</button>
+            <button type="button" id="fsa-tpl-btn" class="rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:border-navy-900 hover:text-navy-900 transition">Download Template</button>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-amber-200 bg-amber-50/90 px-4 py-2.5 text-xs text-amber-900">
+          <strong>Note:</strong> I don't support any private information &mdash; use this tool just to check your result. All parsing &amp; calculations run 100% locally in your browser; no files leave your device.
+        </div>
+
+        <div id="fsa-status" class="hidden rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-medium text-emerald-800"></div>
+
+        <div class="grid gap-6 lg:grid-cols-12">
+          <!-- Left: Extracted / Editable BCTC Inputs -->
+          <div class="lg:col-span-4 rounded-xl border border-slate-200/80 bg-slate-50 p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-navy-900">Extracted Line Items</span>
+              <span class="text-[11px] text-slate-500">Editable</span>
+            </div>
+            <div id="fsa-inputs-grid" class="grid grid-cols-2 gap-2.5 text-xs"></div>
+          </div>
+
+          <!-- Right: Curated Key Ratios with * Formulas -->
+          <div class="lg:col-span-8 space-y-4">
+            <div id="fsa-ratios-grid" class="grid gap-4 sm:grid-cols-2"></div>
+            <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 text-[11px] text-slate-600 leading-relaxed">
+              <strong class="text-navy-900">* Formula Reference:</strong> Each ratio marked with <strong class="text-gold-600">*</strong> displays its exact formula directly below the metric (aligned with Corporate Financial Statement Analysis standards: 360-day convention for DIO, EBT-based ROA &amp; Adjusted ROA / BEP).
             </div>
           </div>
         </div>
@@ -2536,6 +2580,215 @@
         URL.revokeObjectURL(url);
         showToast('Downloaded updated index.html! Upload it to GitHub.');
       });
+
+      // BCTC Ratio Analyzer (Tab 7)
+      const fsaFields = [
+        { key: 'rev', label: 'Net Revenue', val: 1200, aliases: ['doanh thu thuan', 'doanh thu bán hàng', 'net revenue', 'revenue', 'net sales', 'sales'] },
+        { key: 'cogs', label: 'COGS', val: 820, aliases: ['gia von hang ban', 'cost of goods sold', 'cogs', 'cost of sales'] },
+        { key: 'gp', label: 'Gross Profit', val: 380, aliases: ['loi nhuan gop', 'gross profit'] },
+        { key: 'int', label: 'Interest Expense', val: 28, aliases: ['chi phi lai vay', 'interest expense', 'finance cost'] },
+        { key: 'ebt', label: 'EBT (Pre-Tax)', val: 145, aliases: ['loi nhuan truoc thue', 'tong loi nhuan ke toan truoc thue', 'ebt', 'profit before tax'] },
+        { key: 'ni', label: 'Net Income', val: 116, aliases: ['loi nhuan sau thue', 'net income', 'net profit', 'profit after tax'] },
+        { key: 'cash', label: 'Cash & Equiv.', val: 110, aliases: ['tien va cac khoan tuong duong tien', 'tien va tuong duong tien', 'cash and cash equivalents', 'cash'] },
+        { key: 'stinv', label: 'ST Investments', val: 40, aliases: ['dau tu tai chinh ngan han', 'short-term investments', 'marketable securities'] },
+        { key: 'ar', label: 'Receivables', val: 180, aliases: ['cac khoan phai thu ngan han', 'phai thu khach hang', 'accounts receivable', 'receivables'] },
+        { key: 'inv', label: 'Inventory', val: 165, aliases: ['hang ton kho', 'inventory', 'inventories'] },
+        { key: 'ca', label: 'Current Assets', val: 520, aliases: ['tai san ngan han', 'total current assets', 'current assets'] },
+        { key: 'ta', label: 'Total Assets', val: 1150, aliases: ['tong cong tai san', 'tong tai san', 'total assets'] },
+        { key: 'cl', label: 'Current Liab.', val: 290, aliases: ['no ngan han', 'total current liabilities', 'current liabilities'] },
+        { key: 'tl', label: 'Total Liabilities', val: 560, aliases: ['no phai tra', 'tong no phai tra', 'total liabilities'] },
+        { key: 'eq', label: 'Total Equity', val: 590, aliases: ['von chu so huu', 'total equity', 'shareholders equity', 'equity'] },
+        { key: 'ocf', label: 'Operating CF', val: 152, aliases: ['luu chuyen tien thuan tu hoat dong kinh doanh', 'luu chuyen tien thuan tu hdkd', 'operating cash flow', 'ocf'] }
+      ];
+
+      const fsaInputsGrid = document.getElementById('fsa-inputs-grid');
+      const fsaRatiosGrid = document.getElementById('fsa-ratios-grid');
+      const fsaStatus = document.getElementById('fsa-status');
+
+      function normalizeStr(s) {
+        return String(s || '').toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+
+      function renderFsaInputs() {
+        fsaInputsGrid.innerHTML = fsaFields.map(f => `
+          <div>
+            <label for="fsa-in-${f.key}" class="block text-[11px] font-medium text-slate-600 mb-0.5 truncate" title="${f.label}">${f.label}</label>
+            <input id="fsa-in-${f.key}" data-key="${f.key}" type="number" step="any" value="${f.val}" class="fsa-num w-full rounded-lg border border-slate-300 bg-white px-2 py-1 text-xs font-semibold text-navy-900 tabular-nums focus:border-navy-900 focus:outline-none" />
+          </div>
+        `).join('');
+        fsaInputsGrid.querySelectorAll('.fsa-num').forEach(inp => {
+          inp.addEventListener('input', () => {
+            const field = fsaFields.find(x => x.key === inp.dataset.key);
+            if (field) field.val = Number(inp.value) || 0;
+            renderFsaRatios();
+          });
+        });
+      }
+
+      function getVal(k) {
+        const f = fsaFields.find(x => x.key === k);
+        return f ? f.val : 0;
+      }
+
+      function renderFsaRatios() {
+        const rev = getVal('rev'), cogs = getVal('cogs'), gp = getVal('gp') || (rev - cogs);
+        const intExp = getVal('int'), ebt = getVal('ebt'), ni = getVal('ni');
+        const cash = getVal('cash'), stinv = getVal('stinv'), inv = getVal('inv');
+        const ca = getVal('ca'), ta = getVal('ta'), cl = getVal('cl'), tl = getVal('tl'), eq = getVal('eq'), ocf = getVal('ocf');
+
+        const safeDiv = (a, b) => (b && b !== 0 ? a / b : null);
+        const fmtX = (v) => v === null ? '—' : v.toFixed(2) + 'x';
+        const fmtPct = (v) => v === null ? '—' : (v * 100).toFixed(1) + '%';
+        const fmtNum = (v) => v === null ? '—' : v.toLocaleString(undefined, { maximumFractionDigits: 1 });
+
+        const groups = [
+          {
+            title: 'Liquidity & Working Capital',
+            items: [
+              { name: 'Current Ratio', val: fmtX(safeDiv(ca, cl)), formula: 'Current Assets / Current Liabilities' },
+              { name: 'Quick Ratio', val: fmtX(safeDiv(ca - inv, cl)), formula: '(Current Assets − Inventory) / Current Liabilities' },
+              { name: 'Cash Ratio', val: fmtX(safeDiv(cash + stinv, cl)), formula: '(Cash & Equiv. + ST Investments) / Current Liabilities' },
+              { name: 'Net Working Capital', val: fmtNum(ca - cl), formula: 'Current Assets − Current Liabilities' }
+            ]
+          },
+          {
+            title: 'Capital Structure & Solvency',
+            items: [
+              { name: 'Debt-to-Assets', val: fmtPct(safeDiv(tl, ta)), formula: 'Total Liabilities / Total Assets' },
+              { name: 'Debt-to-Equity (D/E)', val: fmtX(safeDiv(tl, eq)), formula: 'Total Liabilities / Total Equity' },
+              { name: 'Equity Ratio', val: fmtPct(safeDiv(eq, ta)), formula: 'Total Equity / Total Assets' },
+              { name: 'Interest Coverage (ICR)', val: fmtX(safeDiv(ebt + intExp, intExp)), formula: '(EBT + Interest Expense) / Interest Expense' }
+            ]
+          },
+          {
+            title: 'Operating Efficiency',
+            items: [
+              { name: 'Asset Turnover (TAT)', val: fmtX(safeDiv(rev, ta)), formula: 'Net Revenue / Total Assets' },
+              { name: 'Inventory Turnover', val: fmtX(safeDiv(cogs, inv)), formula: 'COGS / Inventory' },
+              { name: 'Days Inventory (DIO)', val: safeDiv(cogs, inv) ? Math.round(360 / safeDiv(cogs, inv)) + ' days' : '—', formula: '360 / Inventory Turnover' }
+            ]
+          },
+          {
+            title: 'Profitability & Cash Quality',
+            items: [
+              { name: 'Gross Margin', val: fmtPct(safeDiv(gp, rev)), formula: 'Gross Profit / Net Revenue' },
+              { name: 'Net Margin (ROS)', val: fmtPct(safeDiv(ni, rev)), formula: 'Net Income / Net Revenue' },
+              { name: 'ROA (EBT) / BEP', val: `${fmtPct(safeDiv(ebt, ta))} / ${fmtPct(safeDiv(ebt + intExp, ta))}`, formula: 'EBT / Total Assets | (EBT + Interest) / Total Assets' },
+              { name: 'ROE', val: fmtPct(safeDiv(ni, eq)), formula: 'Net Income / Total Equity' },
+              { name: 'OCF / Net Income', val: fmtX(safeDiv(ocf, ni)), formula: 'Operating Cash Flow / Net Income' }
+            ]
+          }
+        ];
+
+        fsaRatiosGrid.innerHTML = groups.map(g => `
+          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-xs space-y-2.5">
+            <div class="text-xs font-bold uppercase tracking-wider text-navy-900 border-b border-slate-100 pb-2">${g.title}</div>
+            <div class="space-y-2">
+              ${g.items.map(it => `
+                <div class="flex items-start justify-between gap-2">
+                  <div class="min-w-0">
+                    <div class="text-xs font-semibold text-slate-800">${it.name}<span class="text-gold-600 font-bold ml-0.5" title="* ${it.formula}">*</span></div>
+                    <div class="text-[10px] text-slate-400 leading-tight">* ${it.formula}</div>
+                  </div>
+                  <div class="text-xs font-bold text-navy-900 tabular-nums shrink-0">${it.val}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function parseNumericCell(v) {
+        if (typeof v === 'number' && !Number.isNaN(v)) return v;
+        if (typeof v !== 'string') return null;
+        const cleaned = v.replace(/\s+/g, '').replace(/,/g, '');
+        if (!cleaned || isNaN(Number(cleaned))) return null;
+        return Number(cleaned);
+      }
+
+      function mapRowsToFields(rows) {
+        let matched = 0;
+        const usedKeys = new Set();
+        rows.forEach(row => {
+          if (!Array.isArray(row) || row.length < 2) return;
+          const labelNorm = normalizeStr(row[0]);
+          if (!labelNorm) return;
+          let num = null;
+          for (let i = 1; i < row.length; i++) {
+            const parsed = parseNumericCell(row[i]);
+            if (parsed !== null) { num = parsed; break; }
+          }
+          if (num === null) return;
+          for (const f of fsaFields) {
+            if (usedKeys.has(f.key)) continue;
+            if (f.aliases.some(a => labelNorm === a || labelNorm.includes(a))) {
+              f.val = num;
+              usedKeys.add(f.key);
+              matched++;
+              break;
+            }
+          }
+        });
+        return matched;
+      }
+
+      document.getElementById('fsa-file').addEventListener('change', async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        try {
+          let rows = [];
+          if (file.name.toLowerCase().endsWith('.csv')) {
+            const text = await file.text();
+            rows = text.split(/\r?\n/).map(line => line.split(',').map(c => c.replace(/^"|"$/g, '').trim()));
+          } else if (window.XLSX) {
+            const buf = await file.arrayBuffer();
+            const wb = XLSX.read(buf, { type: 'array' });
+            wb.SheetNames.forEach(name => {
+              const sheetRows = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1 });
+              rows = rows.concat(sheetRows);
+            });
+          } else {
+            showToast('Excel parser still loading—try CSV or refresh page.');
+            return;
+          }
+          const matched = mapRowsToFields(rows);
+          renderFsaInputs();
+          renderFsaRatios();
+          fsaStatus.classList.remove('hidden');
+          fsaStatus.textContent = `Parsed "${file.name}" locally: matched ${matched} of ${fsaFields.length} financial statement line items.`;
+        } catch (err) {
+          fsaStatus.classList.remove('hidden');
+          fsaStatus.textContent = 'Could not parse file. Please check that Column A has line-item names and Column B has numeric values.';
+        }
+        e.target.value = '';
+      });
+
+      document.getElementById('fsa-demo-btn').addEventListener('click', () => {
+        const demo = { rev: 1200, cogs: 820, gp: 380, int: 28, ebt: 145, ni: 116, cash: 110, stinv: 40, ar: 180, inv: 165, ca: 520, ta: 1150, cl: 290, tl: 560, eq: 590, ocf: 152 };
+        fsaFields.forEach(f => { f.val = demo[f.key]; });
+        renderFsaInputs();
+        renderFsaRatios();
+        fsaStatus.classList.remove('hidden');
+        fsaStatus.textContent = 'Loaded sample financial statement data.';
+      });
+
+      document.getElementById('fsa-tpl-btn').addEventListener('click', () => {
+        const csvLines = ['Line Item (EN / VAS),Value'].concat(fsaFields.map(f => `"${f.label}",${f.val}`));
+        const blob = new Blob([csvLines.join('\n')], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'BCTC_Template.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      renderFsaInputs();
+      renderFsaRatios();
     })();
   </script>
 </body>
