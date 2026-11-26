@@ -153,7 +153,7 @@
             <div class="rounded-xl border border-slate-200/90 bg-white/75 p-3.5 shadow-sm">
               <div class="text-xs font-bold text-navy-900">Live Interactive Models</div>
               <p class="mt-1 text-xs text-slate-600 leading-relaxed">
-                <strong>BvA Variance, Working Capital, Operational FCF &amp; DCF</strong> — showing how I structure data and solve problems.
+                <strong>Working Capital, Operational FCF &amp; DCF</strong> — showing how I structure data and solve problems.
               </p>
             </div>
           </div>
@@ -355,7 +355,7 @@
           <button data-tab="tab-dcf" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">DCF Valuation Lab</button>
           <button data-tab="tab-wc" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Working Capital (CCC)</button>
           <button data-tab="tab-ops" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Ops Driver &rarr; FCF</button>
-          <button data-tab="tab-bva" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BvA Variance Bridge</button> 
+          <!-- BvA hidden until coursework is completed: remove the word "hidden" below to restore --><button data-tab="tab-bva" class="hidden analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">BvA Variance Bridge</button> 
          <button data-tab="tab-fsa" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">Financial Analysis</button>
          <button data-tab="tab-ntp" class="analysis-tab rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-navy-900 transition">NTP (HNX) Case Study</button>
         </div>
@@ -616,7 +616,7 @@
             </div>
             <p class="text-xs text-slate-500 leading-relaxed">
             <strong>Note (For Reference Only):</strong> DSO is calculated on Revenue, while DIO &amp; DPO are based on COGS. Optimal CCC benchmarks vary by industry and company-specific operating factors. <br />
-            <strong>Data source:</strong> By Basis Report Editorial Desk.Reviewed by Basis Report Methodology Team. Last updated November 20, 2026.
+            <strong>Data source:</strong> illustrative industry-average benchmarks for reference only (not audited); verify against a current published industry report before relying on them.
             </p>
           </div>
         </div>
@@ -891,7 +891,7 @@
               <span class="text-xs font-bold uppercase tracking-wider text-navy-900">Extracted Line Items</span>
               <span class="text-[11px] text-slate-500">Editable</span>
             </div>
-            <div id="fsa-inputs-grid" class="grid grid-cols-2 gap-2.5 text-xs"></div>
+            <div class="mb-2 text-xs text-slate-600">Unit of the figures: <select id="fsa-unit" class="rounded border border-slate-300 px-1 py-0.5"><option value="">Not specified</option><option>VND</option><option>thousand VND</option><option>million VND</option><option>billion VND</option><option>USD</option><option>thousand USD</option><option>million USD</option></select></div><div id="fsa-inputs-grid" class="grid grid-cols-2 gap-2.5 text-xs"></div>
           </div>
 
           <!-- Right: Curated Key Ratios with * Formulas -->
@@ -2638,6 +2638,7 @@
         { key: 'ocf', label: 'Operating CF', val: 152, aliases: ['luu chuyen tien thuan tu hoat dong kinh doanh', 'luu chuyen tien thuan tu hdkd', 'operating cash flow', 'ocf'] }
       ];
 
+      let fsaUnit = ''; const fsaMatches = [];
       const fsaInputsGrid = document.getElementById('fsa-inputs-grid');
       const fsaRatiosGrid = document.getElementById('fsa-ratios-grid');
       const fsaStatus = document.getElementById('fsa-status');
@@ -2687,7 +2688,7 @@
               { name: 'Current Ratio', val: fmtX(safeDiv(ca, cl)), formula: 'Current Assets / Current Liabilities' },
               { name: 'Quick Ratio', val: fmtX(safeDiv(ca - inv, cl)), formula: '(Current Assets − Inventory) / Current Liabilities' },
               { name: 'Cash Ratio', val: fmtX(safeDiv(cash + stinv, cl)), formula: '(Cash & Equiv. + ST Investments) / Current Liabilities' },
-              { name: 'Net Working Capital', val: fmtNum(ca - cl), formula: 'Current Assets − Current Liabilities' }
+              { name: 'Net Working Capital', val: fmtNum(ca - cl) + (fsaUnit ? ' ' + fsaUnit : ''), formula: 'Current Assets − Current Liabilities' }
             ]
           },
           {
@@ -2737,21 +2738,41 @@
         `).join('');
       }
 
+      function parseNum(t) {
+        let s = String(t).trim(), neg = false;
+        if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
+        if (s[0] === '-') { neg = true; s = s.slice(1); }
+        s = s.replace(/[\s$€₫]/g, '');
+        if (!/^\d[\d.,]*$/.test(s)) return null;
+        const d = (s.match(/\./g) || []).length, c = (s.match(/,/g) || []).length;
+        if (d && c) { const dec = s.lastIndexOf('.') > s.lastIndexOf(',') ? '.' : ','; const th = dec === '.' ? ',' : '.'; s = s.split(th).join('').replace(dec, '.'); }
+        else if (d > 1 || c > 1) s = s.replace(/[.,]/g, '');
+        else if (d === 1 || c === 1) { const p = s.split(d ? '.' : ','); s = (p[1].length === 3 && p[0].length <= 3 && p[0] !== '0') ? p.join('') : p.join('.'); }
+        const n = Number(s); return isNaN(n) ? null : (neg ? -n : n);
+      }
+      function detectUnit(t) {
+        for (const m of t.matchAll(/don vi tinh|don vi|dvt|\bunit\b|\bin (?:million|thousand|billion)/g)) {
+          const w = t.slice(m.index, m.index + 45);
+          const sc = /trieu (dong|vnd)|million/.test(w) ? 'million ' : /nghin (dong|vnd)|ngan dong|thousand/.test(w) ? 'thousand ' : /ty (dong|vnd)|billion/.test(w) ? 'billion ' : '';
+          const cu = /usd/.test(w) ? 'USD' : (/vnd|dong/.test(w) || sc) ? 'VND' : '';
+          if (cu) return (sc + cu).trim();
+        }
+        return '';
+      }
       function parseNumericCell(v) {
         if (typeof v === 'number' && !Number.isNaN(v)) return v;
         if (typeof v !== 'string') return null;
-        const cleaned = v.replace(/\s+/g, '').replace(/,/g, '');
-        if (!cleaned || isNaN(Number(cleaned))) return null;
-        return Number(cleaned);
+        return parseNum(v);
       }
 
       function mapRowsToFields(rows) {
         let matched = 0;
+        const EXCL = ['chua phan phoi','luy ke','dau nam','dau ky','cua co dong','khong kiem soat','dai han','cuoi nam'];
         const usedKeys = new Set();
         rows.forEach(row => {
           if (!Array.isArray(row) || row.length < 2) return;
           const labelNorm = normalizeStr(row[0]);
-          if (!labelNorm) return;
+          if (!labelNorm || EXCL.some(x => labelNorm.includes(x))) return;
           let num = null;
           for (let i = 1; i < row.length; i++) {
             const parsed = parseNumericCell(row[i]);
@@ -2762,6 +2783,7 @@
             if (usedKeys.has(f.key)) continue;
             if (f.aliases.some(a => labelNorm === a || labelNorm.includes(a))) {
               f.val = num;
+              fsaMatches.push({ key: f.key, label: String(row[0]), val: num, pg: row.pg });
               usedKeys.add(f.key);
               matched++;
               break;
@@ -2775,44 +2797,50 @@
         const file = e.target.files && e.target.files[0];
         if (!file) return;
         try {
-          let rows = [];
+          let rows = [], detectedUnit = '', scanned = false;
           const fname = file.name.toLowerCase();
           if (fname.endsWith('.csv')) {
             const text = await file.text();
             rows = text.split(/\r?\n/).map(line => line.split(',').map(c => c.replace(/^"|"$/g, '').trim()));
           } else if (fname.endsWith('.pdf')) {
-            if (!window.pdfjsLib) {
-              showToast('PDF parser still loading—please try again or use Excel/CSV.');
-              return;
-            }
+            if (!window.pdfjsLib) { showToast('PDF parser still loading—please try again or use Excel/CSV.'); return; }
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
             const buf = await file.arrayBuffer();
             const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
-            const maxPages = Math.min(pdf.numPages, 80);
-            for (let p = 1; p <= maxPages; p++) {
-              const page = await pdf.getPage(p);
-              const tc = await page.getTextContent();
-              const linesMap = [];
+            const pages = []; let chars = 0;
+            for (let p = 1; p <= Math.min(pdf.numPages, 400); p++) {
+              const tc = await (await pdf.getPage(p)).getTextContent();
+              const lm = [];
               tc.items.forEach(it => {
-                const str = (it.str || '').trim();
-                if (!str) return;
-                const y = Math.round(it.transform[5] / 3) * 3;
-                const x = it.transform[4];
-                let line = linesMap.find(l => Math.abs(l.y - y) <= 3);
-                if (!line) { line = { y, items: [] }; linesMap.push(line); }
-                line.items.push({ x, str });
+                const str = (it.str || '').trim(); if (!str) return;
+                const y = it.transform[5], x = it.transform[4];
+                let l = lm.find(l => Math.abs(l.y - y) <= 3);
+                if (!l) { l = { y, items: [] }; lm.push(l); }
+                l.items.push({ x, str });
               });
-              linesMap.sort((a, b) => b.y - a.y);
-              linesMap.forEach(l => {
+              lm.sort((a, b) => b.y - a.y);
+              const prow = [], texts = [];
+              lm.forEach(l => {
                 l.items.sort((a, b) => a.x - b.x);
-                const full = l.items.map(i => i.str).join(' ').replace(/\s+/g, ' ').trim();
-                const m = full.match(/^([A-Za-zÀ-ỹ\s,&().\/-]+?)\s+([$€₫\d,().-]+(?:\s+[$€₫\d,().-]+)*)$/);
-                if (m) {
-                  const nums = m[2].split(/\s+/).map(t => t.replace(/[$€₫]/g, '').replace(/^\((.+)\)$/, '-$1'));
-                  rows.push([m[1].trim(), ...nums]);
-                }
+                const toks = l.items.map(i => i.str).join(' ').replace(/\s+/g, ' ').trim().split(' ');
+                texts.push(toks.join(' ')); chars += toks.join(' ').length;
+                const nums = []; let k = toks.length;
+                while (k > 0) { const t = toks[k - 1]; const v = t === '-' ? 0 : parseNum(t); if (v === null) break; nums.unshift({ t, v }); k--; }
+                if (!nums.length || !k) return;
+                const label = toks.slice(0, k).join(' ');
+                if (!/[A-Za-zÀ-ỹ]{3}/.test(label)) return;
+                while (nums.length > 1 && /^\d{1,3}$/.test(nums[0].t) && (nums.length > 2 || !/^\d{1,3}$/.test(nums[1].t))) nums.shift();
+                const r = [label, ...nums.map(n => n.v)]; r.pg = p; prow.push(r);
               });
+              pages.push({ prow, norm: normalizeStr(texts.join(' ')) });
             }
+            if (chars < 200) scanned = true;
+            const heads = ['bang can doi ke toan', 'ket qua hoat dong kinh doanh', 'luu chuyen tien te', 'balance sheet', 'income statement', 'statement of financial position', 'statement of cash flows', 'statement of profit'];
+            const hd = pages.map(pg => heads.some(h => pg.norm.includes(h)));
+            const flag = pages.map((pg, i) => pg.prow.length >= 10 && (hd[i] || hd[i - 1] || hd[i - 2]));
+            const useAll = !flag.some(Boolean);
+            pages.forEach((pg, i) => { if (useAll || flag[i]) rows.push(...pg.prow); });
+            for (let i = 0; i < pages.length && !detectedUnit; i++) if (useAll || flag[i]) detectedUnit = detectUnit(pages[i].norm);
           } else if (window.XLSX) {
             const buf = await file.arrayBuffer();
             const wb = XLSX.read(buf, { type: 'array' });
@@ -2824,13 +2852,23 @@
             showToast('Excel parser still loading—try CSV or refresh page.');
             return;
           }
+          fsaFields.forEach(f => { f.val = 0; }); fsaMatches.length = 0;
           const matched = mapRowsToFields(rows);
+          fsaUnit = detectedUnit || (fname.endsWith('.pdf') ? '' : detectUnit(normalizeStr(rows.slice(0, 25).map(r => [].concat(r).join(' ')).join(' '))));
+          document.getElementById('fsa-unit').value = fsaUnit;
           renderFsaInputs();
           renderFsaRatios();
           fsaStatus.classList.remove('hidden');
-          fsaStatus.textContent = matched > 0
-            ? `Parsed "${file.name}" locally: matched ${matched} of ${fsaFields.length} financial statement line items.`
-            : `No matching line items found in "${file.name}". If this is a scanned PDF, please use Excel/CSV or edit the fields directly.`;
+          const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+          const miss = fsaFields.filter(f => !fsaMatches.some(m => m.key === f.key)).map(f => f.label);
+          const bal = (getVal('ta') && getVal('tl') && getVal('eq')) ? Math.abs(getVal('ta') - getVal('tl') - getVal('eq')) / getVal('ta') : 0;
+          fsaStatus.innerHTML = scanned
+            ? `No readable text in "${esc(file.name)}": it looks like a scanned/image PDF. Please use a text-based PDF, Excel/CSV, or type the figures below.`
+            : `Parsed "${esc(file.name)}" locally: matched ${matched} of ${fsaFields.length} line items (first value column = current period). `
+              + (fsaUnit ? `Unit detected: <b>${esc(fsaUnit)}</b>. ` : `<b>Unit not found in the file &mdash; please choose it in the Unit box below</b> (ratios do not depend on it, but Net Working Capital does). `)
+              + (miss.length ? `<b>Not found (set to 0, please fill in):</b> ${esc(miss.join(', '))}. ` : '')
+              + (bal > 0.01 ? `<b>Check:</b> Total Assets &ne; Liabilities + Equity, so a line may have been misread. ` : '')
+              + `<details class="mt-1"><summary class="cursor-pointer">Show what was read</summary>${fsaMatches.map(m => `<div>${esc(fsaFields.find(f => f.key === m.key).label)} &larr; &ldquo;${esc(m.label)}&rdquo; = ${m.val.toLocaleString()}${m.pg ? ' (p.' + m.pg + ')' : ''}</div>`).join('')}</details>`;
         } catch (err) {
           fsaStatus.classList.remove('hidden');
           fsaStatus.textContent = 'Could not parse file. Please check that Column A has line-item names and Column B has numeric values.';
@@ -2838,6 +2876,7 @@
         e.target.value = '';
       });
 
+      document.getElementById('fsa-unit').addEventListener('change', e => { fsaUnit = e.target.value; renderFsaRatios(); });
       document.getElementById('fsa-demo-btn').addEventListener('click', () => {
         const demo = { rev: 1200, cogs: 820, gp: 380, int: 28, ebt: 145, ni: 116, cash: 110, stinv: 40, ar: 180, inv: 165, ca: 520, ta: 1150, cl: 290, tl: 560, eq: 590, ocf: 152 };
         fsaFields.forEach(f => { f.val = demo[f.key]; });
@@ -2864,5 +2903,13 @@
       renderFsaRatios();
     })();
   </script>
+<script>
+(function(){const P=document.getElementById('tab-wc');if(!P)return;
+P.insertAdjacentHTML('beforeend','<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm"><label class="text-xs font-semibold text-slate-700" for="wc-cogs">Annual COGS ($M) <input id="wc-cogs" type="number" min="0" step="any" value="100" class="ml-2 w-28 rounded border border-slate-300 px-2 py-1"></label><div id="wc-cash" class="mt-2 font-semibold text-navy-900"></div><div class="mt-1 text-[11px] text-slate-500">Approximation: cash = days &times; COGS &divide; 360 (DSO is strictly revenue-based; COGS is used for all three days for simplicity). Illustrative figures, not company data.</div></div>');
+const g=id=>document.getElementById(id),f=n=>Math.abs(n).toLocaleString(undefined,{maximumFractionDigits:1});
+const u=()=>{const c=+g('wc-dio').value+ +g('wc-dso').value- +g('wc-dpo').value,k=(+g('wc-cogs').value||0)/360;
+ g('wc-cash').textContent=(c>=0?`Cash tied up in the cycle ≈ $${f(c*k)}M.`:`Suppliers finance ≈ $${f(c*k)}M of operations (negative CCC).`)+` Reducing the CCC by 10 days would free ≈ $${f(10*k)}M.`};
+['input','change','click'].forEach(e=>P.addEventListener(e,()=>setTimeout(u,0)));u();})();
+</script>
 </body>
 </html>
